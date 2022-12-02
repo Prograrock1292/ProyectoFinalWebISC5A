@@ -1,23 +1,20 @@
 |<?php
 
-    $servidor = 'localhost:33065';
+    session_start();
+    $micarrito=[];
+    $_SESSION["compras"] = $micarrito;
+    $servidor = 'localhost:43065';
     $cuenta = 'root';
     $password = '';
     $bd = 'bdgrafica';
 
-    //conexion a la base de datos
     $conexion = new mysqli($servidor, $cuenta, $password, $bd);
 
     if ($conexion->connect_errno) {
         die('Error en la conexion');
     } else {
-        //conexion exitosa
-
-        /*revisar si traemos datos a insertar en la bd  dependiendo
-         de que el boton de enviar del formulario se le dio clic*/
 
         if (isset($_POST['submit']) && !empty($_POST['idprod'])) {
-            //obtenemos datos del formulario
             $IdProd = $_POST['idprod'];
             $NombreP = $_POST['nombrep'];
             $Categoria = $_POST['categoria'];
@@ -25,77 +22,56 @@
             $Existencia = $_POST['existencia'];
             $Precio = $_POST['precio'];
             $ArchivoIMG = $_POST['archivoimg'];
-
-            //hacemos cadena con la sentencia mysql para insertar datos
             $sql = "INSERT INTO productos VALUES('$IdProd','$NombreP','$Categoria','$Descripcion','$Existencia','$Precio','$ArchivoIMG')";
-            $conexion->query($sql);  //aplicamos sentencia que inserta datos en la tabla usuarios de la base de datos
-            if ($conexion->affected_rows >= 1) { //revisamos que se inserto un registro
+            $conexion->query($sql);
+            if ($conexion->affected_rows >= 1) {
                 echo '<script> alert("registro insertado") </script>';
-            } //fin
-
-            //continaumos con la consulta de datos a la tabla usuarios
-        }
-        //vemos datos en un tabla de html
-        $sql = 'select * from productos'; //hacemos cadena con la sentencia mysql que consulta todo el contenido de la tabla
-        $resultado = $conexion->query($sql); //aplicamos sentencia
-
-        if ($resultado->num_rows) { //si la consulta genera registros
-            /*echo '<div style="margin-left: 20px;">';
-            echo '<table class="table table-hover" style="width:50%;">';
-
-            echo '<tr>';
-            echo '<th>idprod</th>';
-            echo '<th>nombrep</th>';
-            echo '<th>categoria</th>';
-            echo '<th>descripcion</th>';
-            echo '<th>existencia</th>';
-            echo '<th>precio</th>';
-            echo '<th>archivoimg</th>';
-            echo '</tr>';
-            while ($fila = $resultado->fetch_assoc()) { //recorremos los registros obtenidos de la tabla
-                echo '<tr>';
-                echo '<td>' . $fila['IdProd'] . '</td>';
-                echo '<td>' . $fila['NombreP'] . '</td>';
-                echo '<td>' . $fila['Categoria'] . '</td>';
-                echo '<td>' . $fila['Descripcion'] . '</td>';
-                echo '<td>' . $fila['Existencia'] . '</td>';
-                echo '<td>' . $fila['Precio'] . '</td>';
-                echo '<td>' . $fila['ArchivoIMG'] . '</td>';
-                echo '</tr>';
             }
-            echo '</table">';
-            echo '</div>';*/
+        }
+        $sql = 'select * from productos';
+        $resultado = $conexion->query($sql);
+
+        if ($resultado->num_rows) {
             echo "<div class='containerProd'>";
-            while ($fila = $resultado->fetch_assoc()) { //recorremos los registros obtenidos de la tabla
-            echo '<div class="card mb-3" style="max-width: 540px;">
+            while ($fila = $resultado->fetch_assoc()) {
+                echo '<div class="card mb-3" style="max-width: 540px;">
+                <form action='.htmlspecialchars($_SERVER["PHP_SELF"]).' method="POST">
             <div class="row no-gutters">
               <div class="col-md-4">
-                <img src="'.$fila["ArchivoIMG"].'" class="card-img" alt="'.$fila["ArchivoIMG"].'">
+                <img src="' . $fila["ArchivoIMG"] . '" class="card-img" alt="' . $fila["ArchivoIMG"] . '">
               </div>
               <div class="col-md-8">
                 <div class="card-body"> 
-                  <h5 class="card-title">'.$fila["IdProd"].'.- '.$fila["NombreP" ].'<a href="edicion.php"> ¿Algo esta mal? </a></h5>
-                  <p class="card-text"><small class="text-muted">Categoría: '.$fila["Categoria"].'</small></p>
-                  <p class="card-text">'.$fila["Descripcion"].'</p>
-                  <p class="card-text"><small class="text-muted">Existencias: '.$fila["Existencia"].'</small></p>
-                  <p class="card-text"><small class="text-muted">Precio: '.$fila["Precio"].'</small></p>
+                  <h5 class="card-title">' . $fila["IdProd"] . '.- ' . $fila["NombreP"] . '<br><a href="edicion.php"> ¿Algo esta mal? </a></h5>
+                  <p class="card-text"><small class="text-muted">Categoría: ' . $fila["Categoria"] . '</small></p>
+                  <p class="card-text">' . $fila["Descripcion"] . '</p>
+                  <p class="card-text"><small class="text-muted">Existencias: ' . $fila["Existencia"] . '</small></p>
+                  <p class="card-text"><small class="text-muted">Precio: ' . $fila["Precio"] . '</small></p>
+                  <input type="hidden" value="'.$fila["NombreP"].'" name="articulo">
+                  <input class="btn btn-success" type="submit" value="enviar">
                 </div>
               </div>
             </div>
+            </form>
           </div>';
             }
             echo "</div>";
         } else {
             echo "no hay datos";
         }
-    } //fin 
+    }
 
 
+    //echo "Bienvenido(a) " . $_SESSION["usuario"];
 
-
-
+    if (empty($_SESSION["compras"]) && empty($_POST["articulo"]))
+        echo "<br>carrito vacio";
+    else {
+        echo "<p>Llevas comprado: ";
+        array_push($_SESSION['compras'], $_POST['articulo']);
+        print_r($_SESSION['compras']);
+    }
     ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -111,6 +87,7 @@
             padding: 10px;
 
         }
+
         .containerProd {
             display: flex;
             flex-wrap: wrap;
@@ -153,12 +130,12 @@
                         <label for="id">Archivoimg</label>
                         <input type="text" name="archivoimg" class="form-control" id="archivoimg" placeholder="">
                     </div>
-                    <button class="btn btn-success" type="submit" name="submit">Submit</button> 
+                    <button class="btn btn-success" type="submit" name="submit">Submit</button>
                     <button class="btn btn-success" type="submit" name="submit">Editar</button>
                 </form>
-            </div> <!-- fin col -->
-        </div> <!-- fin row -->
-    </div> <!-- fin container -->
+            </div>
+        </div>
+    </div>
     <br><br>
 </body>
 

@@ -24,8 +24,8 @@ $res = $conexion->query($sql);
             var data = google.visualization.arrayToDataTable([
                 ['Productos', 'Cantidad de unidades vendidas'],
                 <?php
-                while($fila = $res->fetch_assoc()){
-                    echo "['".$fila["NombreProd"]."',".$fila["Cantidad"]."],";
+                while ($fila = $res->fetch_assoc()) {
+                    echo "['" . $fila["NombreProd"] . "'," . $fila["Cantidad"] . "],";
                 }
                 ?>
             ]);
