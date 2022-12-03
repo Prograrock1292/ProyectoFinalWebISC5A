@@ -1,12 +1,41 @@
 |<?php
 
     session_start();
-    $micarrito=[];
-    $_SESSION["compras"] = $micarrito;
     $servidor = 'localhost:43065';
     $cuenta = 'root';
     $password = '';
     $bd = 'bdgrafica';
+    ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        td,
+        th {
+            padding: 10px;
+
+        }
+
+        .containerProd {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <p>Bienvenido <?php echo $_SESSION['nombre']; ?></p>
+        <br>
+        <a class="btn btn-success" href="login.php">Iniciar sesion</a>
+    </header>
+    <?php
 
     $conexion = new mysqli($servidor, $cuenta, $password, $bd);
 
@@ -35,7 +64,7 @@
             echo "<div class='containerProd'>";
             while ($fila = $resultado->fetch_assoc()) {
                 echo '<div class="card mb-3" style="max-width: 540px;">
-                <form action='.htmlspecialchars($_SERVER["PHP_SELF"]).' method="POST">
+                <form action=' . htmlspecialchars($_SERVER["PHP_SELF"]) . ' method="POST">
             <div class="row no-gutters">
               <div class="col-md-4">
                 <img src="' . $fila["ArchivoIMG"] . '" class="card-img" alt="' . $fila["ArchivoIMG"] . '">
@@ -47,7 +76,7 @@
                   <p class="card-text">' . $fila["Descripcion"] . '</p>
                   <p class="card-text"><small class="text-muted">Existencias: ' . $fila["Existencia"] . '</small></p>
                   <p class="card-text"><small class="text-muted">Precio: ' . $fila["Precio"] . '</small></p>
-                  <input type="hidden" value="'.$fila["NombreP"].'" name="articulo">
+                  <input type="hidden" value="' . $fila["NombreP"] . '" name="articulo">
                   <input class="btn btn-success" type="submit" value="enviar">
                 </div>
               </div>
@@ -73,30 +102,7 @@
     }
     ?>
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <title>Document</title>
-    <style>
-        td,
-        th {
-            padding: 10px;
-
-        }
-
-        .containerProd {
-            display: flex;
-            flex-wrap: wrap;
-            align-content: space-between;
-        }
-    </style>
-</head>
-
-<body>
     <div class="container">
         <div class="row">
             <div class="col-4">
