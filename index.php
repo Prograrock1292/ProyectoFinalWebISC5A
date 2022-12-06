@@ -5,6 +5,10 @@
     $cuenta = 'root';
     $password = '';
     $bd = 'bdgrafica';
+    if(isset($_POST['logout'])) {
+        session_destroy();
+        header('Location: index.php');
+    }
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,9 +35,16 @@
 
 <body>
     <header>
-        <p>Bienvenido <?php echo $_SESSION['nombre']; ?></p>
+        <?php
+        if ($_SESSION['nombre']) {
+            echo "<p>Bienvenido " . $_SESSION['nombre'] . "</p>";
+        }
+        ?>
         <br>
         <a class="btn btn-success" href="login.php">Iniciar sesion</a>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" role="form" style="width: 20%;">
+            <button type="submit" name="logout" class="btn btn-primary btn-block">Cerrar sesión</button>
+        </form>
     </header>
     <?php
 

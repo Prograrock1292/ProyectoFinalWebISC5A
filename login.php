@@ -1,9 +1,9 @@
 <?php
     session_start();
-    $servidor = 'localhost:33065';
+    $servidor = 'localhost:43065';
     $cuenta = 'root';
     $password = '';
-    $bd = 'proyfinal';
+    $bd = 'bdgrafica';
 
     $conexion = new mysqli($servidor, $cuenta, $password, $bd);
 
@@ -49,11 +49,11 @@
                                 if ($bloqueo['Bloqueo'] == '0') {
                                     mysqli_query($conexion, "UPDATE usuarios SET intentos=0 WHERE Cuenta = '$username'");
                                     $_SESSION['nombre'] = $_POST['username'];
-                                    //$micarrito=[];
-                                    //$_SESSION["compras"] = $micarrito;
+                                    $micarrito=[];
+                                    $_SESSION["compras"] = $micarrito;
 
                                     
-                                    header('Location: page.php');
+                                    header('Location: index.php');
                                 } else if ($bloqueo['Bloqueo'] == '2') {
                                     mysqli_query($conexion, "UPDATE usuarios SET intentos=0 WHERE Cuenta = '$username'");
                                     $_SESSION['nombre'] = $_POST['username'];
