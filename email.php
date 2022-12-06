@@ -16,10 +16,10 @@
     $newpass = '';
     foreach (array_rand($seed, 10) as $k) $newpass .= $seed[$k];
 
-    $servidor='localhost:43065';
+    $servidor='localhost:33065';
     $cuenta='root';
     $password='';
-    $bd='bdgrafica';
+    $bd='proyfinal';
 
     $conexion = new mysqli($servidor,$cuenta,$password,$bd);
 
