@@ -8,7 +8,7 @@
     $width = 130;
     $height = 40;
     $font_size = 20;
-    $font = "Roboto-Regular.ttf";
+    $font = "fonts/Roboto-Regular.ttf";
     $chars_length = 5;
 
     $captcha_characters = '0123456789';
