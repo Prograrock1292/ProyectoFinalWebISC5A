@@ -1,9 +1,9 @@
 <?php
     session_start();
-    $servidor='localhost:33065';
+    $servidor='localhost:43065';
     $cuenta='root';
     $password='';
-    $bd='proyfinal';
+    $bd='bdgrafica';
     //$usuario = $_SESSION['nombre'];
    
     $conexion = new mysqli($servidor,$cuenta,$password,$bd);

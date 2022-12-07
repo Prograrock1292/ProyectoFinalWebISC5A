@@ -1,9 +1,10 @@
 |<?php
     //include_once "header.php";
-    $servidor = 'localhost:33065';
+    $servidor = 'localhost:43065';
     $cuenta = 'root';
     $password = '';
-    $bd = 'proyfinal';
+    $bd = 'bdgrafica';
+    session_start();
     if(isset($_POST['logout'])) {
         session_destroy();
         header('Location: index.php');
@@ -35,15 +36,17 @@
 <body>
     <header>
         <?php
-        if ($_SESSION['nombre']) {
+        if (isset($_SESSION['nombre'])) {
             echo "<p>Bienvenido " . $_SESSION['nombre'] . "</p>";
+            echo '<form action="'.htmlspecialchars($_SERVER["PHP_SELF"]).'" method="post" role="form" style="width: 20%;">
+            <button type="submit" name="logout" class="btn btn-primary btn-block">Cerrar sesión</button>
+            </form>';
+        }
+        else{
+            echo '<br>
+            <a class="btn btn-success" href="login.php">Iniciar sesion</a>';
         }
         ?>
-        <br>
-        <a class="btn btn-success" href="login.php">Iniciar sesion</a>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" role="form" style="width: 20%;">
-            <button type="submit" name="logout" class="btn btn-primary btn-block">Cerrar sesión</button>
-        </form>
     </header>
     <?php
 
