@@ -30,8 +30,7 @@
         if ($bloqueo['Bloqueo'] == '1') {
             echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
                                         <strong>Cuenta bloqueada.</strong> <a href='recuperar.php'>Recupere su cuenta aquí</a>
-                                          <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                                            <span aria-hidden='true'>&times;</span>
+                                          <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
                                           </button>
                                     </div>";
         } else if ($bloqueo['Bloqueo'] == '0' or $bloqueo['Bloqueo'] == '2') {
@@ -63,8 +62,7 @@
                             } else {
                                 echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
                                         <strong>¡Captcha incorrecto!</strong> Por favor vuelva a intentarlo.
-                                          <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                                            <span aria-hidden='true'>&times;</span>
+                                          <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
                                           </button>
                                     </div>";
                             }
@@ -78,15 +76,13 @@
                         mysqli_query($conexion, "UPDATE usuarios SET bloqueo=1 WHERE Cuenta = '$username'");
                         echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
                                         <strong>Cuenta bloqueada.</strong> <a href='recuperar.php'>Recupere su cuenta aquí</a>
-                                          <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                                            <span aria-hidden='true'>&times;</span>
+                                          <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
                                           </button>
                                     </div>";
                     } else {
                         echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
                                         <strong>Datos incorrectos</strong> Por favor vuelva a intentarlo.
-                                          <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                                            <span aria-hidden='true'>&times;</span>
+                                          <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
                                           </button>
                                     </div>";
                     }
@@ -95,8 +91,7 @@
                 mysqli_query($conexion, "UPDATE usuarios SET bloqueo=1 WHERE Cuenta = '$username'");
                 echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
                                         <strong>Cuenta bloqueada.</strong> <a href='recuperar.php'>Recupere su cuenta aquí</a>
-                                          <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                                            <span aria-hidden='true'>&times;</span>
+                                          <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
                                           </button>
                                     </div>";
             }
@@ -121,10 +116,10 @@
 <body>
     <form class="form mx-auto" role="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" style="width: 20%; margin-top: 100px;">
         <div class="form-group my-3">
-            <input name="username" id="user" placeholder="Usuario" class="form-control form-control-sm" type="text" required="">
+            <input name="username" id="user" placeholder="Usuario" class="form-control form-control" type="text" required="">
         </div>
         <div class="form-group my-3">
-            <input name="password" id="passwordInput" placeholder="Password" class="form-control form-control-sm" type="password" required="">
+            <input name="password" id="passwordInput" placeholder="Password" class="form-control form-control" type="password" required="">
         </div>
         <div class="form-group  my-3">
             <label for="captcha"><small><b>Ingrese el texto de la imagen</b></small></label>
@@ -134,12 +129,12 @@
             <a href="#" id="refresh-captcha" class="align-middle" title="refresh"><i class="fa-solid fa-rotate-right fa-2x"></i></a>
         </div>
         <div class="form-group my-3">
-            <input type="text" id="token" name="token" class="form-control form-control-sm" style="min-width: 150px;">
+            <input type="text" id="token" name="token" class="form-control form-control" style="min-width: 150px;">
         </div>
         <div class="form-group my-3">
             <input type="checkbox" name="remember"> Recordar usuario y password
         </div>
-        <div class="form-group my-3">
+        <div class="form-group my-3 text-center">
             <button type="submit" name="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
         </div>
         <div class="form-group text-center my-3">

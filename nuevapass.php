@@ -1,10 +1,10 @@
 <?php
     session_start();
-    $servidor='localhost:43065';
+    $servidor='localhost:33065';
     $cuenta='root';
     $password='';
-    $bd='bdgrafica';
-    $usuario = $_SESSION['nombre'];
+    $bd='proyfinal';
+    //$usuario = $_SESSION['nombre'];
    
     $conexion = new mysqli($servidor,$cuenta,$password,$bd);
 
@@ -19,8 +19,7 @@
         if ($password2 != $password1) {
             echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
                         <strong>¡Las contraseñas no coinciden!</strong> Por favor vuelva a intentarlo.
-                          <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                            <span aria-hidden='true'>&times;</span>
+                          <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
                           </button>
                     </div>";
         } else {
@@ -30,8 +29,7 @@
                 mysqli_query($conexion,"UPDATE usuarios SET bloqueo=0 WHERE Cuenta = '$usuario'");
                 echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
                                     <strong>Contraseña actualizada exitosamente</strong>
-                                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                                        <span aria-hidden='true'>&times;</span>
+                                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
                                       </button>
                                 </div>";
                 session_destroy();
@@ -62,19 +60,36 @@
 
     <form class="form mx-auto" role="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" style="width: 20%; margin-top: 100px;">
         <div class="form-group my-3">
-            <label for="">Generar nueva contraseña para la cuenta: <?php echo $usuario ?></label>
+            <label for="">Generar nueva contraseña para la cuenta: <?php //echo $usuario ?></label>
         </div>
         <div class="form-group my-3">
-            <input name="password1" id="password1" placeholder="Contraseña" class="form-control form-control-sm" type="password" required="">
+            <input name="password1" id="password1" placeholder="Contraseña" class="form-control form-control" type="password" required="">
         </div>
-        <div class="form-group my-3">
-            <input name="password2" id="password2" placeholder="Confirmar contraseña" class="form-control form-control-sm" type="password" required="">
+        <div class="form-group mt-3 mb-1">
+            <input name="password2" id="password2" placeholder="Confirmar contraseña" class="form-control form-control" type="password" required="">
         </div>
-        <div class="form-group my-3">
-            <button type="submit" name="submit" class="btn btn-primary btn-block">Aceptar</button>
+        <div class="form-group my-1">
+            <label for="password1" id="confirm" style="font-size: 0.8em; color: red"></label>
+        </div>
+        <div class="form-group mb-3 mt-2 text-center">
+            <button type="submit" name="submit" class="btn btn-primary btn-block">Registrarse</button>
         </div>
     </form>
-
+    <script>
+        let passw1 = document.querySelector('#password1');
+        let passw2 = document.querySelector('#password2');
+        let resultado = document.querySelector('#confirm');
+        
+        function verificaPass() {
+            resultado.innerText = passw1.value == passw2.value ? '' : 'Las contraseñas no coinciden';
+        }
+        
+        passw1.addEventListener('keyup', () => {
+            if (passw2.value.length != 0) verificaPass();
+        })
+        
+        passw2.addEventListener('keyup', verificaPass);
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

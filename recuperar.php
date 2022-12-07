@@ -17,11 +17,11 @@
 
 
     <form class="form mx-auto" role="form" action="email.php" method="post" style="width: 20%; margin-top: 100px;">
-        <div class="form-group my-3">
+        <div class="form-group">
             <label for="correo">Por favor ingrese su correo electrónico para enviarle su contraseña de recuperación</label>
-            <input name="correo" id="correo" placeholder="Email" class="form-control form-control-sm" type="email" required="">
+            <input name="correo" id="correo" placeholder="Email" class="form-control form-control my-3" type="email" required="">
         </div>
-        <div class="form-group my-3">
+        <div class="form-group my-3 text-center">
             <button type="submit" name="submit" class="btn btn-primary btn-block">Aceptar</button>
         </div>
     </form>
