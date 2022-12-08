@@ -34,7 +34,7 @@
                 echo '<div class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters">
               <div class="col-md-4">
-                <img src="' . $fila["ArchivoIMG"] . '" class="card-img" alt="' . $fila["ArchivoIMG"] . '">
+                <img src="images/' . $fila["ArchivoIMG"] . '" class="card-img" alt="' . $fila["ArchivoIMG"] . '">
               </div>
               <div class="col-md-8">
                 <div class="card-body"> 
@@ -42,6 +42,7 @@
                   <p class="card-text"><small class="text-muted">Categoría: ' . $fila["Categoria"] . '</small></p>
                   <p class="card-text"><small class="text-muted">Existencias: ' . $fila["Existencia"] . '</small></p>
                   <p class="card-text"><small class="text-muted">Precio: ' . $fila["Precio"] . '</small></p>
+                  <p class="card-text"><small class="text-muted">Nombre de la imagen: ' . $fila["ArchivoIMG"] . '</small></p>
                   <a href="actualizar.php?id=' . $fila["IdProd"] . '"> Editar </a> | <a href="eliminar.php?id=' . $fila["IdProd"] . '"> Eliminar </a>
                 </div>
               </div>

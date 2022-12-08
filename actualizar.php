@@ -19,7 +19,7 @@
             $Precio = $_POST['precio'];
             $ArchivoIMG = $_POST['archivoimg'];
 
-            $sql = "UPDATE productos SET NombreP='$NombreP', Categoria='$Categoria', Descripcion='$Descripcion', Existencia='$Existencia', Precio='$Precio' WHERE IdProd = '$IdProd'";
+            $sql = "UPDATE productos SET NombreP='$NombreP', Categoria='$Categoria', Descripcion='$Descripcion', Existencia='$Existencia', Precio='$Precio', ArchivoIMG='$ArchivoIMG' WHERE IdProd = '$IdProd'";
             $conexion->query($sql);
             echo '<script> alert("registro actualizado") </script>';
             header("Location : pruebabd1.php");
@@ -35,7 +35,7 @@
                 echo '<div class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters">
               <div class="col-md-4">
-                <img src="' . $fila["ArchivoIMG"] . '" class="card-img" alt="' . $fila["ArchivoIMG"] . '">
+                <img src="images/' . $fila["ArchivoIMG"] . '" class="card-img" alt="' . $fila["ArchivoIMG"] . '">
               </div>
               <div class="col-md-8">
                 <div class="card-body"> 
@@ -45,8 +45,9 @@
                   <p class="card-text"><input type = "text" name = "descripcion" placeholder = "' . $fila["Descripcion"] . '"></p>
                   <p class="card-text"><small class="text-muted">Existencias:<input type = "text" name = "existencia" placeholder = "' . $fila["Existencia"] . '"></small></p>
                   <p class="card-text"><small class="text-muted">Precio: <input type = "number" name = "precio" placeholder = "' . $fila["Precio"] . '"></small></p>
+                  <p class="card-text"><small class="text-muted">Nombre de la imagen: <input type = "text" value = "'. $fila["ArchivoIMG"] .'" name = "archivoimg"></small></p>
                   <input type = "hidden" value = "' . $fila["IdProd"] . '" name = "idprod"> 
-                  <input type = "hidden" value = "' . $fila["ArchivoIMG"] . '" name = "archivoimg"> 
+                  
                   </form>
                 <button class="btn btn-success" type="submit" name="actualizar">Actualizar</button> 
               </div>

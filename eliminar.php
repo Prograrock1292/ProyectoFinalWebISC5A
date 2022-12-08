@@ -35,7 +35,7 @@ if ($conexion->connect_errno) {
             echo '<div class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters">
               <div class="col-md-4">
-                <img src="' . $fila["ArchivoIMG"] . '" class="card-img" alt="' . $fila["ArchivoIMG"] . '">
+                <img src="images/' . $fila["ArchivoIMG"] . '" class="card-img" alt="' . $fila["ArchivoIMG"] . '">
               </div>
               <div class="col-md-8">
                 <div class="card-body"> 

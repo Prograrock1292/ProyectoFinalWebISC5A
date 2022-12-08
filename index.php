@@ -1,13 +1,9 @@
 |<?php
     include_once('header.php');
-    $servidor = 'localhost:33065';
+    $servidor = 'localhost:43065';
     $cuenta = 'root';
     $password = '';
-    $bd = 'proyfinal';
-    if(isset($_POST['logout'])) {
-        session_destroy();
-        header('Location: index.php');
-    }
+    $bd = 'bdgrafica';
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,14 +19,6 @@
 
 <body>
     <header>
-        <?php
-        if (isset($_SESSION['nombre'])) {
-            echo "<p>Bienvenido " . $_SESSION['nombre'] . "</p>";
-            echo '<form action="'.htmlspecialchars($_SERVER["PHP_SELF"]).'" method="post" role="form" style="width: 20%;">
-            <button type="submit" name="logout" class="btn btn-primary btn-block">Cerrar sesión</button>
-            </form>';
-        }
-        ?>
     </header>
     <section>
         <div class="bg-image">
@@ -139,7 +127,7 @@
                 <form action=' . htmlspecialchars($_SERVER["PHP_SELF"]) . ' method="POST">
             <div class="row no-gutters">
               <div class="col-md-4">
-                <img src="' . $fila["ArchivoIMG"] . '" class="card-img" alt="' . $fila["ArchivoIMG"] . '">
+                <img src="images/' . $fila["ArchivoIMG"] . '" class="card-img" alt="' . $fila["ArchivoIMG"] . '">
               </div>
               <div class="col-md-8">
                 <div class="card-body"> 
@@ -148,7 +136,7 @@
                   <p class="card-text">' . $fila["Descripcion"] . '</p>
                   <p class="card-text"><small class="text-muted">Existencias: ' . $fila["Existencia"] . '</small></p>
                   <p class="card-text"><small class="text-muted">Precio: ' . $fila["Precio"] . '</small></p>
-                  <input type="hidden" value="' . $fila["NombreP"] . '" name="articulo">
+                  <input type="hidden" value="' . $fila["IdProd"] . '" name="articulo">
                   <input class="btn btn-success" type="submit" value="enviar">
                 </div>
               </div>
@@ -165,13 +153,7 @@
 
     //echo "Bienvenido(a) " . $_SESSION["usuario"];
 
-    if (empty($_SESSION["compras"]) && empty($_POST["articulo"]))
-        echo "<br>carrito vacio";
-    else {
-        echo "<p>Llevas comprado: ";
-        array_push($_SESSION['compras'], $_POST['articulo']);
-        print_r($_SESSION['compras']);
-    }
+    
     ?>
 
 

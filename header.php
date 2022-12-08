@@ -2,7 +2,13 @@
 if (isset($_POST['logout'])) {
         session_destroy();
         header("Location: index.php");
-    }?>
+    }
+    $servidor = 'localhost:43065';
+    $cuenta = 'root';
+    $password = '';
+    $bd = 'bdgrafica';
+    $conexion = new mysqli($servidor, $cuenta, $password, $bd);
+    ?>
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/daf8eb91e6.js" crossorigin="anonymous"></script>
@@ -60,7 +66,21 @@ if (isset($_POST['logout'])) {
                         <a class="nav-link " aria-current="page" href="#">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " id="log" aria-current="page" href="login.php"><i class="fa-solid fa-circle-user fa-2x"></i><p>Log in</p></a>
+                        <?php
+                        if(!isset($_SESSION['nombre'])){
+                            echo '<a class="nav-link " id="log" aria-current="page" href="login.php"><i class="fa-solid fa-circle-user fa-2x"></i><p>Log in</p></a>';
+                        }
+                        else{
+                            echo '<p>Bienvenido, <span class="nav-link" aria-current="page">'.$_SESSION['nombre'].'</span></p>
+                            </li>
+                            <li class="nav-item">
+                            <form action="'.htmlspecialchars($_SERVER["PHP_SELF"]).'" method="post" role="form" style="width: 20%;">
+                                <button type="submit" name="logout" class="nav-link " aria-current="page" id="log" style="background=none;"><p>Cerrar sesión</p></button>
+                            </form>
+                            ';
+                        }
+                        ?>
+                        
                     </li>
                     
                     <li class="nav-item" style="margin-left:30px;">
@@ -100,7 +120,38 @@ if (isset($_POST['logout'])) {
                 </form>
             </div>
 -->
-
+        <?php
+            if(!isset($_SESSION['nombre'])){
+                echo "<p>Para empezar a agregar productos a tu carrito, debes de <a href='login.php'>iniciar sesión</a> o de <a href='registro.php'>registrarte aquí</a>.";
+            }
+            else{
+                if (empty($_SESSION["compras"]) && empty($_POST["articulo"]))
+                    echo "<br><p>Carrito de compras vacío</p>";
+                else {
+                    echo "<p>Llevas comprado: ";
+                    array_push($_SESSION['compras'], $_POST['articulo']);
+                    echo "<table class='table table-dark table-striped'>
+                    <tbody>";
+                    $i=0;
+                    foreach($_SESSION['compras'] as $index){
+                        $i+=1;
+                        $sqlC="SELECT ArchivoIMG, NombreP, Precio FROM productos WHERE IdProd='$index';";
+                        $resultado=$conexion->query($sqlC);
+                        $fila=$resultado->fetch_assoc();
+                        echo "<tr>
+                            <th scope='row'>".$i."</th>
+                            <td><img src='images/".$fila['ArchivoIMG']."' width='50px' height='50px'></td>
+                            <td><p>".$fila['NombreP']."</p></td>
+                            <td><p>".$fila['Precio']."</p></td>
+                        </tr>";
+                    }
+                    echo "</tbody>
+                    </table>";
+                    //print_r($_SESSION['compras']);
+                    echo "</p>";
+                }
+            }
+            ?>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
