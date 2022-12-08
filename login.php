@@ -1,9 +1,9 @@
 <?php
     session_start();
-    $servidor = 'localhost:43065';
+    $servidor = 'localhost:33065';
     $cuenta = 'root';
     $password = '';
-    $bd = 'bdgrafica';
+    $bd = 'proyfinal';
 
     $conexion = new mysqli($servidor, $cuenta, $password, $bd);
 
@@ -110,35 +110,42 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/daf8eb91e6.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="css/login.css">
+    <title>Iniciar sesión</title>
 </head>
 
 <body>
-    <form class="form mx-auto" role="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" style="width: 20%; margin-top: 100px;">
-        <div class="form-group my-3">
-            <input name="username" id="user" placeholder="Usuario" class="form-control form-control" type="text" required="">
+    <div style="width:100%; text-align: end; padding: 10px;" id="cerrar">                                   
+        <a href="index.php"><img src="images/BoomBoxLogo4Img.png" alt="" style="width: 70px"></a>
+    </div>
+       <form class="form mx-auto" role="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" style="width: 20%; margin-top: 80px;">
+        <div class="form-group my-4 text-center">
+            <h2>Iniciar sesión</h2>
         </div>
         <div class="form-group my-3">
-            <input name="password" id="passwordInput" placeholder="Password" class="form-control form-control" type="password" required="">
+            <input name="username" id="user" placeholder="Usuario"  type="text" required="">
+        </div>
+        <div class="form-group my-3">
+            <input name="password" id="passwordInput" placeholder="Password" type="password" required="">
         </div>
         <div class="form-group  my-3">
-            <label for="captcha"><small><b>Ingrese el texto de la imagen</b></small></label>
+            <label for="captcha"><small>Ingrese el texto de la imagen</small></label>
         </div>
         <div class="form-group  my-3">
             <img src="captcha.php?12325" alt="CAPTCHA" id="image-captcha">
-            <a href="#" id="refresh-captcha" class="align-middle" title="refresh"><i class="fa-solid fa-rotate-right fa-2x"></i></a>
+            <a href="#" id="refresh-captcha" class="align-middle" title="refresh"><i class="fa-solid fa-rotate-right fa-2x" style="color:#b20218"></i></a>
         </div>
         <div class="form-group my-3">
-            <input type="text" id="token" name="token" class="form-control form-control" style="min-width: 150px;">
+            <input type="text" id="token" name="token" style="min-width: 150px;" placeholder="XXXXX">
         </div>
         <div class="form-group my-3">
             <input type="checkbox" name="remember"> Recordar usuario y password
         </div>
         <div class="form-group my-3 text-center">
-            <button type="submit" name="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+            <button type="submit" name="submit">Iniciar sesión</button>
         </div>
         <div class="form-group text-center my-3">
-            <small><a href="registro.php">Registrar cuenta</a></small>
+            <small>¿Eres nuevo en el sitio? <a href="registro.php"><b>Registra una cuenta</b></a></small>
         </div>
     </form>
 

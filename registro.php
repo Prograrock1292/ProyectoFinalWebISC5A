@@ -1,8 +1,8 @@
 <?php
-    $servidor='localhost:43065';
+    $servidor='localhost:33065';
     $cuenta='root';
     $password='';
-    $bd='bdgrafica';
+    $bd='proyfinal';
    
     $conexion = new mysqli($servidor,$cuenta,$password,$bd);
 
@@ -45,36 +45,41 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/daf8eb91e6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/login.css">
     <title>Document</title>
 </head>
 
 <body>
-
-
-    <form class="form mx-auto" role="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" style="width: 20%; margin-top: 100px;">
-        <div class="form-group my-3">
-            <input name="nombre" id="nombre" placeholder="Nombre" class="form-control form-control" type="text" required="">
+    <div style="width:100%; text-align: end; padding: 10px;" id="cerrar">                                   
+        <a href="index.php"><img src="images/BoomBoxLogo4Img.png" alt="" style="width: 70px"></a>
+    </div>
+       <form class="form mx-auto" role="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" style="width: 20%; margin-top: 80px;">
+       <div class="form-group my-4 text-center">
+            <h2>Registrar cuenta</h2>
         </div>
         <div class="form-group my-3">
-            <input name="correo" id="correo" placeholder="Email" class="form-control form-control" type="email" required="">
+            <input name="nombre" id="nombre" placeholder="Nombre"  type="text" required="">
         </div>
         <div class="form-group my-3">
-            <input name="cuenta" id="cuenta" placeholder="Nombre de usuario" class="form-control form-control" type="text" required="">
+            <input name="correo" id="correo" placeholder="Email" type="email" required="">
         </div>
         <div class="form-group my-3">
-            <input name="password1" id="password1" placeholder="Contraseña" class="form-control form-control" type="password" required="">
+            <input name="cuenta" id="cuenta" placeholder="Nombre de usuario" type="text" required="">
+        </div>
+        <div class="form-group my-3">
+            <input name="password1" id="password1" placeholder="Contraseña" type="password" required="">
         </div>
         <div class="form-group mt-3 mb-1">
-            <input name="password2" id="password2" placeholder="Confirmar contraseña" class="form-control form-control" type="password" required="">
+            <input name="password2" id="password2" placeholder="Confirmar contraseña"  type="password" required="">
         </div>
         <div class="form-group my-1">
             <label for="password1" id="confirm" style="font-size: 0.8em; color: red"></label>
         </div>
         <div class="form-group text-center mb-3 mt-2">
-            <button type="submit" name="submit" class="btn btn-primary btn-block">Registrarse</button>
+            <button type="submit" name="submit">Registrarse</button>
         </div>
         <div class="form-group text-center my-3">
-            <small>¿Ya tienes una cuenta? <a href="login.php">Iniciar sesión</a></small>
+            <small>¿Ya tienes una cuenta? <a href="login.php">Inicia sesión</a></small>
         </div>
     </form>
     <script>

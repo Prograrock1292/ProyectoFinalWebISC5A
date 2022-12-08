@@ -5,10 +5,26 @@ if (isset($_POST['logout'])) {
     }?>
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/daf8eb91e6.js" crossorigin="anonymous"></script>
     <style>
         .offcanvas-backdrop {
             background-color: rgba(0, 0, 0, .5) !important;
         }
+        #log {
+            color: #B20218;
+            font-weight: bold;
+            display: flex;
+        }
+        
+        #log p {
+            padding-left: 10px;
+       
+        }
+        
+        #log:hover {
+            color: #74000f;
+        }
+        
     </style>
         <link rel="icon" type="image/x-icon" href="img/favicon.png">
     <?php
@@ -18,44 +34,64 @@ if (isset($_POST['logout'])) {
 </head>
 
 <body>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #0c3858;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.php">Boombox</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark " style="background-color: #000000; height: 100px;">
+        <div class="container-fluid" style="width: 100%;">
+           <div class="row" style="width: 100%; padding-left: 80px;">
+               <div class="col-7 d-flex flex-row">
+                    <a class="navbar-brand" href="index.php"><img src="images/BoomBoxLogo1_PNG.png" alt="" width="200px"></a>
+                    <h5 class="me-auto mb-2 mb-lg-0 navbar-brand" style="color:white; padding-top:10px;"><i>"Desempolvando música"</i></h5>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+               </div>
+            <div class="col-5" style="padding-top: 5px">   
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php" style="font-size: 18px;">Inicio</a>
+                        <a class="nav-link" aria-current="page" href="index.php">Inicio</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#" >Tienda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#" >Ayuda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="#">Contacto</a>
+                    </li>
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 18px;">
-                            Certificaciones
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Más
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="certificaciones.php#java">Java</a></li>
-                            <li><a class="dropdown-item" href="certificaciones.php#cpp">C++</a></li>
-                            <li><a class="dropdown-item" href="certificaciones.php#php">PHP</a></li>
-                            <li><a class="dropdown-item" href="certificaciones.php#swift">Swift</a></li>
+                            <li><a class="dropdown-item" href="#">Preguntas Frecuentes</a></li>
+                            <li><a class="dropdown-item" href="#">Fidelización</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contacto.php" style="font-size: 18px;">Contacto</a>
+                        <a class="nav-link " id="log" aria-current="page" href="login.php"><i class="fa-solid fa-circle-user fa-2x"></i><p>Log in</p></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="acercade.php" style="font-size: 18px;">Acerca de</a>
+                    
+                    <li class="nav-item" style="margin-left:30px;">
+                        <a class="nav-link " aria-current="page" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping fa-2x"></i></a>
                     </li>
+                    
                 </ul>
+                </div>
+                </div>
             </div>
         </div>
     </nav>
+    <div style="width: 100%; height: 70px; background: #000000">
+    </div>
     <div class="offcanvas offcanvas-end" tabindex="-1" data-bs-backdrop="false" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header text-white bg-dark">
-            <h5 class="offcanvas-title" id="offcanvasRightLabel">Inicio de sesión</h5>
+        <div class="offcanvas-header text-white" style="background:#000000">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito de compras</h5>
             <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body text-white bg-dark" style="padding: 50px;">
+        <div class="offcanvas-body text-white" style="padding: 50px; background:#000000">
+<!--
             <div>
                 <h5>Ingrese sus datos:</h5><br>
                 <form class="form" role="form" action="login.php" method="post">
@@ -73,6 +109,7 @@ if (isset($_POST['logout'])) {
                     </div>
                 </form>
             </div>
+-->
 
         </div>
     </div>

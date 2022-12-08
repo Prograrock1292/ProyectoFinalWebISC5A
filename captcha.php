@@ -14,7 +14,7 @@
     $captcha_characters = '0123456789';
 
     $image = imagecreatetruecolor($width, $height);
-    $bg_color = imagecolorallocate($image, 0, 105, 143);
+    $bg_color = imagecolorallocate($image, 178, 2, 24);
     $font_color = imagecolorallocate($image, 255, 255, 255);
     imagefilledrectangle($image, 0, 0, $width, $height, $bg_color);
 

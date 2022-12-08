@@ -1,9 +1,9 @@
 <?php
     session_start();
-    $servidor='localhost:43065';
+    $servidor='localhost:33065';
     $cuenta='root';
     $password='';
-    $bd='bdgrafica';
+    $bd='proyfinal';
     //$usuario = $_SESSION['nombre'];
    
     $conexion = new mysqli($servidor,$cuenta,$password,$bd);
@@ -52,6 +52,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/daf8eb91e6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/login.css">
     <title>Document</title>
 </head>
 
@@ -59,20 +60,20 @@
 
 
     <form class="form mx-auto" role="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" style="width: 20%; margin-top: 100px;">
-        <div class="form-group my-3">
+        <div class="form-group my-3 text-center">
             <label for="">Generar nueva contraseña para la cuenta: <?php //echo $usuario ?></label>
         </div>
         <div class="form-group my-3">
-            <input name="password1" id="password1" placeholder="Contraseña" class="form-control form-control" type="password" required="">
+            <input name="password1" id="password1" placeholder="Contraseña" type="password" required="">
         </div>
         <div class="form-group mt-3 mb-1">
-            <input name="password2" id="password2" placeholder="Confirmar contraseña" class="form-control form-control" type="password" required="">
+            <input name="password2" id="password2" placeholder="Confirmar contraseña" type="password" required="">
         </div>
         <div class="form-group my-1">
             <label for="password1" id="confirm" style="font-size: 0.8em; color: red"></label>
         </div>
         <div class="form-group mb-3 mt-2 text-center">
-            <button type="submit" name="submit" class="btn btn-primary btn-block">Registrarse</button>
+            <button type="submit" name="submit">Registrarse</button>
         </div>
     </form>
     <script>

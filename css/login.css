@@ -1,0 +1,61 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: #B20218;
+}
+
+a:hover {
+    color: #cc001a;
+}
+
+.form-group button {
+    background: #B20218;
+    width: 100%;
+    padding: 13px;
+    color: white;
+    font-weight: bold;
+}
+
+.form-group button:hover {
+    background: #8b0011;
+}
+
+#cerrar button {
+    color: white;
+    
+}
+
+input[type=text], input[type=password], input[type=email] {
+    background: #000000;
+    border-bottom-color: #989898;
+    border-top-color: black;
+    border-right-color: black;
+    border-left-color: black;
+    padding: 10px;
+    width: 100%;
+    color: white;
+}
+
+input[type=text]:hover, input[type=password]:hover, input[type=email]:hover {
+    background: #000000;
+    border-bottom-color: #ffffff;
+    border-top-color: black;
+    border-right-color: black;
+    border-left-color: black;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+    background: #000000;
+    border-bottom-color: #B20218;
+    border-top-color: black;
+    border-right-color: black;
+    border-left-color: black;
+    outline: none;
+}
+
+
+

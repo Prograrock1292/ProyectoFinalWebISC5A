@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/daf8eb91e6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/login.css">
     <title>Document</title>
 </head>
 
@@ -19,10 +20,10 @@
     <form class="form mx-auto" role="form" action="email.php" method="post" style="width: 20%; margin-top: 100px;">
         <div class="form-group">
             <label for="correo">Por favor ingrese su correo electrónico para enviarle su contraseña de recuperación</label>
-            <input name="correo" id="correo" placeholder="Email" class="form-control form-control my-3" type="email" required="">
+            <input name="correo" id="correo" placeholder="Email" class="my-3" type="email" required="">
         </div>
         <div class="form-group my-3 text-center">
-            <button type="submit" name="submit" class="btn btn-primary btn-block">Aceptar</button>
+            <button type="submit" name="submit">Aceptar</button>
         </div>
     </form>
 
