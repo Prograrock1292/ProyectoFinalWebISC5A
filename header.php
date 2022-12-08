@@ -36,7 +36,7 @@ if (isset($_POST['logout'])) {
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark " style="background-color: #000000; height: 100px;">
         <div class="container-fluid" style="width: 100%;">
-           <div class="row" style="width: 100%; padding-left: 80px;">
+           <div class="row" style="width: 100%; padding-left: 50px;">
                <div class="col-7 d-flex flex-row">
                     <a class="navbar-brand" href="index.php"><img src="images/BoomBoxLogo1_PNG.png" alt="" width="200px"></a>
                     <h5 class="me-auto mb-2 mb-lg-0 navbar-brand" style="color:white; padding-top:10px;"><i>"Desempolvando música"</i></h5>
@@ -54,20 +54,10 @@ if (isset($_POST['logout'])) {
                         <a class="nav-link" aria-current="page" href="#" >Tienda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#" >Ayuda</a>
+                        <a class="nav-link" aria-current="page" href="#" >Preguntas Frecuentes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="#">Contacto</a>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Más
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Preguntas Frecuentes</a></li>
-                            <li><a class="dropdown-item" href="#">Fidelización</a></li>
-                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " id="log" aria-current="page" href="login.php"><i class="fa-solid fa-circle-user fa-2x"></i><p>Log in</p></a>
