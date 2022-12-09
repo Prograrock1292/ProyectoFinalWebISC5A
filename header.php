@@ -72,6 +72,16 @@ if (isset($_POST['logout'])) {
                             <li class="nav-item">
                                 <a class="nav-link " aria-current="page" href="contacto.php">Contacto</a>
                             </li>
+                            <?php
+                            if(isset($_SESSION['nombre'])){
+                                if(strcmp($_SESSION['nombre'], "Admin")){
+                                    echo '<li class="nav-item">
+                                    <a class="nav-link " aria-current="page" href="admin.php">Administrar</a>
+                                </li>';
+                                }
+                            }
+
+                            ?>
                             <li class="nav-item">
                                 <?php
                                 if(!isset($_SESSION['nombre'])){
