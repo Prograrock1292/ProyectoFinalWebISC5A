@@ -1,0 +1,105 @@
+body {
+    background-color: black;
+    color: white;
+    padding: 0px 70px;
+    min-height: 100%;
+}
+
+
+.sec4 {
+    display: grid;
+    grid-template-columns: 49% 49%;
+    /*grid-template-rows: repeat(2, auto);*/
+    background: #534D48;
+    grid-template-areas: "datos    form";
+    margin-top: 40px;
+}
+
+.sec4-1 {
+    grid-area: datos;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  align-items: center;
+    padding: 30px 120px;
+    text-align: center;
+    line-height: 35px;
+    color: white;
+}
+
+.redes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.redes i {
+    margin: 0px 20px;
+}
+
+.sec4-2 {
+    grid-area: form;
+    padding: 80px 120px;
+    text-align: center;
+}
+
+.sec4-2 #fg{
+    width: 100%;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.sec4-2 button {
+    background: #ffffff;
+    width: 100%;
+    padding: 13px;
+    color: black;
+    font-weight: bold;
+    border: 1px solid #ffffff;
+}
+
+.sec4-2 button:hover {
+    background: #B20218;
+    border-color: #B20218;
+    color: white;
+}
+
+.sec4-2 form {
+    padding: 0;
+}
+
+.sec4-2 input[type=text], .sec4-2 input[type=password], .sec4-2 input[type=email], .sec4-2 textarea {
+    background: #534D48;
+    border-bottom: 2px solid #ffffff;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    padding: 10px;
+    width: 100%;
+    color: white;
+}
+
+textarea {
+    height: 130px;
+    resize: none;
+}
+
+.sec4-2 input[type=text]:hover, .sec4-2 input[type=password]:hover, .sec4-2 input[type=email]:hover, .sec4-2 textarea:hover {
+    background: #534D48;
+    border-bottom-color: #000000;
+}
+
+.sec4-2 input[type=text]:focus, .sec4-2 input[type=password]:focus, .sec4-2 input[type=email]:focus, textarea:focus {
+    background: #534D48;
+    border-bottom-color: #B20218;
+    outline: none;
+}
+
+.sec4-2 input[type=text]::placeholder,  .sec4-2 input[type=password]::placeholder, .sec4-2 input[type=email]::placeholder, textarea::placeholder{
+  color: white;
+}
+
+iframe {
+    margin-top: 30px;
+}

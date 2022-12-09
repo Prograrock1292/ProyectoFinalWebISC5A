@@ -3,10 +3,10 @@ if (isset($_POST['logout'])) {
         session_destroy();
         header("Location: index.php");
     }
-    $servidor = 'localhost:43065';
+    $servidor = 'localhost:33065';
     $cuenta = 'root';
     $password = '';
-    $bd = 'bdgrafica';
+    $bd = 'proyfinal';
     $conexion = new mysqli($servidor, $cuenta, $password, $bd);
     ?>
 <head>
@@ -60,10 +60,13 @@ if (isset($_POST['logout'])) {
                         <a class="nav-link" aria-current="page" href="#" >Tienda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#" >Preguntas Frecuentes</a>
+                        <a class="nav-link" aria-current="page" href="#" >Acerca de</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="#">Contacto</a>
+                        <a class="nav-link" aria-current="page" href="FAQ.php" >FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="contacto.php">Contacto</a>
                     </li>
                     <li class="nav-item">
                         <?php

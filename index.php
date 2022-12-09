@@ -1,4 +1,4 @@
-|<?php
+<?php
     include_once('header.php');
     $servidor = 'localhost:43065';
     $cuenta = 'root';
@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="sec4-2">
-                <form action="" class="form mx-auto" role="form" method="post">
+                <form action="emailContacto.php" class="form mx-auto" role="form" method="post">
                     <div class="form-group my-3">
                         <input name="nombre" id="nomb" placeholder="Nombre"  type="text" required="">
                     </div>
@@ -83,9 +83,9 @@
         <div class="sec5">
            <div class="sec5-1">
                <h1>SUSCRÍBETE AHORA</h1>
-                <form action="">
+                <form action="emailSub.php" method="post">
                     <div class="form-group my-3" style="text-align: center">
-                            <input name="sus" id="sus" placeholder="Ingresa tu email"  type="email" required="">
+                            <input name="sub" id="sub" placeholder="Ingresa tu email"  type="email" required="">
                             <button type="submit" name="submit">Unirse</button>
                     </div>
                 </form>
