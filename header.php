@@ -102,8 +102,14 @@ if (isset($_POST['logout'])) {
 
                             <li class="nav-item">
                                 <a class="nav-link " aria-current="page" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping fa-2x position-relative"><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: .4em;">
-                                    1
-                                    <span class="visually-hidden">unread messages</span>
+                                    <?php
+                                    if(!isset($_SESSION['nombre'])){
+                                        echo "0";
+                                    }
+                                    else{
+                                        echo sizeof($_SESSION['compras']);
+                                    }
+                                    ?>
                                   </span></i></a>
                             </li>
 
