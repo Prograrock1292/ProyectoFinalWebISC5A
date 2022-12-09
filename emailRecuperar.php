@@ -34,7 +34,7 @@
 
     try {
 
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                  
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;                  
         $mail->isSMTP();                                        
         $mail->Host= 'smtp.gmail.com ';                     
         $mail->SMTPAuth=true;             
@@ -59,7 +59,6 @@
 
         $mail->send();
         
-        session_destroy();
 
         echo '<script>window.location.href="login.php";</script>';
 
