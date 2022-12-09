@@ -16,29 +16,29 @@
         $mail->Host= 'smtp.gmail.com ';                     
         $mail->SMTPAuth=true;             
 
-        $mail->Username= 'bautista.ruben.1a.m@gmail.com';
-        $mail->Password= 'ispiirsnisinpegs';
+        $mail->Username= 'boombox.contacto1@gmail.com';
+        $mail->Password= 'jzwofcaclhoardii';
 
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;           
         $mail->Port= 587;
 
 
-        $mail->setFrom('bautista.ruben.1a.m@gmail.com', 'Ruben');
-        $mail->addAddress($_POST['email'], '...');    
+        $mail->setFrom('boombox.contacto1@gmail.com', 'BoomBox');
+        $mail->addAddress('boombox.contacto1@gmail.com', '...');    
 
-        $mail->addCC($_POST['email']);   
+        $mail->addCC('boombox.contacto1@gmail.com');   
 
         $mail->isHTML(true);
 
         $mail->Subject= $_POST['asunto'];
 
-        $mail->Body='Use la siguiente contraseña como recuperación de su cuenta: '.$newpass;
+        $mail->Body='<html><body><b>El usuario '.$_POST['nombre'].' desde el correo '.$_POST['email'].' envió un mensaje:</b><br>'.$_POST['mensaje'].'</body></html>';
 
         $mail->send();
         
         session_destroy();
 
-        echo '<script>window.location.href="login.php";</script>';
+        echo '<script>window.location.href="contacto.php";</script>';
 
     } catch (Exception $e) {
         //echo $mail->ErrorInfo;
