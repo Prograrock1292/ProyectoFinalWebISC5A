@@ -1,0 +1,19 @@
+.tienda{
+    padding: 100px;
+}
+
+.containerProd{
+    display: grid;
+    grid-template: "aside product1 product2 product3"
+                   "aside product4 product5 product6"
+                   "aside product7 product8 product9"
+                   "aside product10 product11 product12" / 1fr 1fr 1fr 1fr;
+}
+
+.aside{
+    background-color: white;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
+    padding: 15px;
+}
