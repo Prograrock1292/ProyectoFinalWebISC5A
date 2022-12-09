@@ -30,9 +30,28 @@
 
         $mail->isHTML(true);
 
-        $mail->Subject= $_POST['asunto'];
+        $mail->Subject= 'Cupon de bienvenida';
+        
+        $mail->AddEmbeddedImage('images/BoomBoxLogo1_PNG.png', 'my-logo', 'BoomBoxLogo1_PNG.png'); 
 
-        $mail->Body='<html><body style="font-size: 1.4em"><b>¡Gracias por suscribirte!</b><br>Aquí tienes un cupón de regalo: (aun no se hacen los cupones)</body></html>';
+        $mail->Body='<html>
+                        <body style="font-size: 1.4em">
+                            <b>¡Gracias por suscribirte!</b>
+                            <br>
+                            <p>Aquí tienes un cupón de regalo:</p>
+                            <div style="width: 320px">
+                                <div style="background: rgb(85,0,0);
+                                            background: linear-gradient(0deg, rgba(85,0,0,1) 0%, rgba(89,0,0,1) 0%, rgba(0,0,0,1) 60%); display: flex; flex-direction: column; align-items: center; padding: 20px;">
+                                    <img src="cid:my-logo" alt="" width="200px">
+                                    <div style="background: #000000; width: 50%; text-align: center; padding: 10px; font-size: 1.3em; font-family: sans-serif; margin-top: 20px; color: white; ">
+                                        Cupón
+                                    </div>
+
+                                </div>
+                                <p style="font-family: sans-serif; color: #4a4a4a; text-align: center; font-weight: bold"><small>25% de descuento sobre el total de tu compra</small></p>
+                            </div>
+                        </body>
+                    </html>';
 
         $mail->send();
         
