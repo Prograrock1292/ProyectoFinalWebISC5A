@@ -76,6 +76,7 @@
                     <div class="form-group my-3 text-center">
                         <button type="submit" name="submit">Enviar</button>
                     </div>
+                </form>
             </div>
         </div>
     </section>
@@ -85,7 +86,7 @@
                <h1>SUSCRÍBETE AHORA</h1>
                 <form action="emailSub.php" method="post">
                     <div class="form-group my-3" style="text-align: center">
-                            <input name="sub" id="sub" placeholder="Ingresa tu email"  type="email" required="">
+                            <input name="sub" id="sub" placeholder="Ingresa tu email"  type="email" required="" style="color:white">
                             <button type="submit" name="submit">Unirse</button>
                     </div>
                 </form>
