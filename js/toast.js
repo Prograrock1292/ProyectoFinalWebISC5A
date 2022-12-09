@@ -1,5 +1,5 @@
-var re=new RegExp("anadir.")
-var toastTrigger = document.getElementById(re)
+//var re=new RegExp("anadir.")
+//var toastTrigger = document.getElementById(re)
 var toastLiveExample = document.getElementById('liveToast')
 if (toastTrigger) {
   toastTrigger.addEventListener('click', function () {
