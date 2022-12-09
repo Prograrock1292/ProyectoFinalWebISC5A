@@ -74,7 +74,7 @@ if (isset($_POST['logout'])) {
                             </li>
                             <?php
                             if(isset($_SESSION['nombre'])){
-                                if(strcmp(trim($_SESSION['nombre']), "Admin")){
+                                if(!strcmp(trim($_SESSION['nombre']), "Admin")){
                                     echo '<li class="nav-item">
                                     <a class="nav-link " aria-current="page" href="admin.php">Administrar</a>
                                 </li>';
@@ -120,36 +120,17 @@ if (isset($_POST['logout'])) {
             <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito de compras</h5>
             <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body text-white" style="padding: 50px; background:#000000">
-<!--
-            <div>
-                <h5>Ingrese sus datos:</h5><br>
-                <form class="form" role="form" action="login.php" method="post">
-                    <div class="form-group" style="margin-bottom: 30px">
-                        <input name="email" id="emailInput" placeholder="Email" class="form-control form-control-lg bg-dark text-white border-2" type="text" required="">
-                    </div>
-                    <div class="form-group" style="margin-bottom: 30px">
-                        <input name="palabra_secreta" id="passwordInput" placeholder="Contraseña" class="form-control form-control-lg bg-dark text-white border-2" type="password" required="">
-                    </div>
-                        <input type="submit" name="login" class="btn btn-success btn-block btn-lg" value="Iniciar sesión">
-                    </div>
-                    <br>
-                    <div class="form-group text-center">
-                        <small><a href="registro.php" data-toggle="modal" data-target="#modalPassword" style="color: aliceblue">Registrar cuenta</a></small>
-                    </div>
-                </form>
-            </div>
--->
+        <div id="canvasCarrito" class="offcanvas-body text-white" style="padding: 50px; background:#000000">
         <?php
             if(!isset($_SESSION['nombre'])){
                 echo "<p>Para empezar a agregar productos a tu carrito, debes de <a href='login.php'>iniciar sesión</a> o de <a href='registro.php'>registrarte aquí</a>.";
             }
             else{
-                if (empty($_SESSION["compras"]) && empty($_POST["articulo"]))
+                if (empty($_SESSION["compras"]))
                     echo "<br><p>Carrito de compras vacío</p>";
                 else {
                     echo "<p>Llevas comprado: ";
-                    array_push($_SESSION['compras'], $_POST['articulo']);
+                    //array_push($_SESSION['compras'], $_POST['articulo']);
                     echo "<table class='table table-dark table-striped'>
                     <tbody>";
                     $i=0;
@@ -177,4 +158,5 @@ if (isset($_POST['logout'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="js/carrito.js"></script>
 </body>
