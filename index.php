@@ -4,6 +4,9 @@
     $cuenta = 'root';
     $password = '';
     $bd = 'proyfinal';
+
+    $generacupon = mysqli_query($conexion, "SELECT * FROM cupones where cupon like '%I%' ORDER BY RAND() LIMIT 1;");
+    $cupon = mysqli_fetch_array($generacupon);
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +47,22 @@
             </div>
             <div class="sec3-2">
                 <img src="images/sec3.JPG" alt="" width="100%"> 
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="secCupon">
+            <h1 style="color: white">¡Usa este cupón antes de que desaparezca!</h1>
+            <div style="width: 320px;">
+                <div style="background: rgb(85,0,0);
+                            background: linear-gradient(0deg, rgba(85,0,0,1) 0%, rgba(89,0,0,1) 0%, rgba(0,0,0,1) 60%); text-align:center; padding: 20px; box-shadow: 0px 0px 15px 2px rgba(191, 191, 191, 0.4); border-radius: 4px">
+                    <img src="images/BoomBoxLogo1_PNG.png" alt="" width="200px" style="margin-bottom: 20px;">
+                    <div style="background: #000000; width: 50%; text-align: center; padding: 10px; font-size: 1.3em; font-family: sans-serif; margin-top: 20px; color: white; margin: 0 auto;">
+                        <?php echo $cupon['cupon'] ?>
+                    </div>
+
+                </div>
+                <p style="font-family: sans-serif; color: white; text-align: center; font-weight: bold; margin-top: 10px;" ><small><?php echo $cupon['descuento'] ?>% de descuento sobre el total de tu compra</small></p>
             </div>
         </div>
     </section>
