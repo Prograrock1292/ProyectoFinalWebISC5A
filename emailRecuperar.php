@@ -39,14 +39,14 @@
         $mail->Host= 'smtp.gmail.com ';                     
         $mail->SMTPAuth=true;             
 
-        $mail->Username= 'bautista.ruben.1a.m@gmail.com';
-        $mail->Password= 'ispiirsnisinpegs';
+        $mail->Username= 'boombox.contacto1@gmail.com';
+        $mail->Password= 'jzwofcaclhoardii';
 
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;           
         $mail->Port= 587;
 
 
-        $mail->setFrom('bautista.ruben.1a.m@gmail.com', 'Ruben');
+        $mail->setFrom('boombox.contacto1@gmail.com', 'BoomBox');
         $mail->addAddress($_POST['correo'], '...');    
 
         $mail->addCC($_POST['correo']);   
@@ -55,7 +55,7 @@
 
         $mail->Subject= 'Recuperacion de password';
 
-        $mail->Body='Use la siguiente contraseña como recuperación de su cuenta: '.$newpass;
+        $mail->Body='<html><body style="font-size: 1.4em">Use la siguiente contraseña como recuperación de su cuenta: <b>'.$newpass.'</b></body></html>';
 
         $mail->send();
         

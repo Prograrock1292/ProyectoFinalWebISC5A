@@ -16,14 +16,14 @@
         $mail->Host= 'smtp.gmail.com ';                     
         $mail->SMTPAuth=true;             
 
-        $mail->Username= 'bautista.ruben.1a.m@gmail.com';
-        $mail->Password= 'ispiirsnisinpegs';
+        $mail->Username= 'boombox.contacto1@gmail.com';
+        $mail->Password= 'jzwofcaclhoardii';
 
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;           
         $mail->Port= 587;
 
 
-        $mail->setFrom('bautista.ruben.1a.m@gmail.com', 'Ruben');
+        $mail->setFrom('boombox.contacto1@gmail.com', 'BoomBox');
         $mail->addAddress($_POST['sub'], '...');    
 
         $mail->addCC($_POST['sub']);   
@@ -32,13 +32,13 @@
 
         $mail->Subject= $_POST['asunto'];
 
-        $mail->Body='Use la siguiente contraseña como recuperación de su cuenta: '.$newpass;
+        $mail->Body='<html><body style="font-size: 1.4em"><b>¡Gracias por suscribirte!</b><br>Aquí tienes un cupón de regalo: (aun no se hacen los cupones)</body></html>';
 
         $mail->send();
         
         session_destroy();
 
-        echo '<script>window.location.href="login.php";</script>';
+        echo '<script>window.location.href="index.php";</script>';
 
     } catch (Exception $e) {
         //echo $mail->ErrorInfo;

@@ -32,7 +32,7 @@
 
         $mail->Subject= $_POST['asunto'];
 
-        $mail->Body='<html><body><b>El usuario '.$_POST['nombre'].' desde el correo '.$_POST['email'].' envió un mensaje:</b><br>'.$_POST['mensaje'].'</body></html>';
+        $mail->Body='<html><body style="font-size: 1.4em"><b>El usuario '.$_POST['nombre'].' con el correo '.$_POST['email'].' envió un mensaje:</b><br>'.$_POST['mensaje'].'</body></html>';
 
         $mail->send();
         
