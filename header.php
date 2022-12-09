@@ -31,6 +31,10 @@ if (isset($_POST['logout'])) {
             color: #74000f;
         }
         
+        li a {
+            vertical-align: middle;
+        }
+        
     </style>
         <link rel="icon" type="image/x-icon" href="img/favicon.png">
     <?php
@@ -42,58 +46,58 @@ if (isset($_POST['logout'])) {
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark " style="background-color: #000000; height: 100px;">
         <div class="container-fluid" style="width: 100%;">
-           <div class="row" style="width: 100%; padding-left: 50px;">
-               <div class="col-7 d-flex flex-row">
+           <div class="row" style="width: 100%; padding-left: 50px; padding-right: 50px;">
+               <div class="col-6 d-flex flex-row">
                     <a class="navbar-brand" href="index.php"><img src="images/BoomBoxLogo1_PNG.png" alt="" width="200px"></a>
                     <h5 class="me-auto mb-2 mb-lg-0 navbar-brand" style="color:white; padding-top:10px;"><i>"Desempolvando música"</i></h5>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
                </div>
-            <div class="col-5" style="padding-top: 5px">   
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.php">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#" >Tienda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="acercaDe.php" >Acerca de</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="FAQ.php" >FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="contacto.php">Contacto</a>
-                    </li>
-                    <li class="nav-item">
-                        <?php
-                        if(!isset($_SESSION['nombre'])){
-                            echo '<a class="nav-link " id="log" aria-current="page" href="login.php"><i class="fa-solid fa-circle-user fa-2x"></i><p>Log in</p></a>';
-                        }
-                        else{
-                            echo '<p>Bienvenido, <span class="nav-link" aria-current="page">'.$_SESSION['nombre'].'</span></p>
+                <div class="col-6 d-flex flex-row" style="padding-top: 5px">   
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav  mb-2 mb-lg-0 justify-content-end" style="width: 100%;">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="index.php">Inicio</a>
                             </li>
                             <li class="nav-item">
-                            <form action="'.htmlspecialchars($_SERVER["PHP_SELF"]).'" method="post" role="form" style="width: 20%;">
-                                <button type="submit" name="logout" class="nav-link " aria-current="page" id="log" style="background=none;"><p>Cerrar sesión</p></button>
-                            </form>
-                            ';
-                        }
-                        ?>
-                        
-                    </li>
-                    
-                    <li class="nav-item" style="margin-left:30px;">
-                        <a class="nav-link " aria-current="page" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping fa-2x"></i></a>
-                    </li>
-                    
-                </ul>
-                </div>
-                </div>
-            </div>
+                                <a class="nav-link" aria-current="page" href="#" >Tienda</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="acercaDe.php" >Acerca de</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="FAQ.php" >FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " aria-current="page" href="contacto.php">Contacto</a>
+                            </li>
+                            <li class="nav-item">
+                                <?php
+                                if(!isset($_SESSION['nombre'])){
+                                    echo '<a class="nav-link " id="log" aria-current="page" href="login.php"><i class="fa-solid fa-circle-user fa-2x"></i><p>Log in</p></a>';
+                                }
+                                else{
+                                    echo '<a class="nav-link " id="log" aria-current="page" href="#"><i class="fa-solid fa-circle-user fa-2x"></i><p>'.$_SESSION['nombre'].'</p></a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <form action="'.htmlspecialchars($_SERVER["PHP_SELF"]).'" method="post" role="form" ">
+                                        <button type="submit" name="logout" class="btn" aria-current="page" id="log" style="background=none;"><i class="fa-solid fa-right-from-bracket fa-2x"></i></button>
+                                    </form>
+                                    ';
+                                }
+                                ?>
+
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link " aria-current="page" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping fa-2x"></i></a>
+                            </li>
+
+                        </ul>
+                        </div>
+                    </div>
+              </div>
         </div>
     </nav>
     <div style="width: 100%; height: 70px; background: #000000">
