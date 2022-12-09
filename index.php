@@ -1,9 +1,9 @@
 <?php
     include_once('header.php');
-    $servidor = 'localhost:43065';
+    $servidor = 'localhost:33065';
     $cuenta = 'root';
     $password = '';
-    $bd = 'bdgrafica';
+    $bd = 'proyfinal';
     ?>
 <!DOCTYPE html>
 <html lang="en">

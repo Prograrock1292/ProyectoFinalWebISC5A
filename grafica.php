@@ -1,8 +1,8 @@
 <?php
-$servidor = 'localhost:43065';
+$servidor = 'localhost:33065';
 $cuenta = 'root';
 $password = '';
-$bd = 'bdgrafica';
+$bd = 'proyfinal';
 
 $conexion = new mysqli($servidor, $cuenta, $password, $bd);
 
