@@ -45,7 +45,7 @@
                         <input name="asunto" id="asunto" placeholder="Asunto"  type="text" required="">
                     </div>
                     <div class="form-group my-3">
-                        <textarea name="mensaje" placeholder="Escriba su mensaje aquí..."></textarea>
+                        <textarea name="mensaje" placeholder="Escriba su mensaje aquí..." required=""></textarea>
                     </div>
                     <div class="form-group my-3 text-center">
                         <button type="submit" name="submit">Enviar</button>

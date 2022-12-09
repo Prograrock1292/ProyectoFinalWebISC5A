@@ -60,7 +60,7 @@ if (isset($_POST['logout'])) {
                         <a class="nav-link" aria-current="page" href="#" >Tienda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#" >Acerca de</a>
+                        <a class="nav-link" aria-current="page" href="acercaDe.php" >Acerca de</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="FAQ.php" >FAQ</a>
