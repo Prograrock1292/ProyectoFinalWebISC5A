@@ -1,4 +1,4 @@
-|<?php
+<?php
 
     $servidor = 'localhost:33065';
     $cuenta = 'root';
@@ -29,9 +29,9 @@
         $resultado = $conexion->query($sql);
 
         if ($resultado->num_rows) {
-            echo "<div class='containerProd'>";
+            echo "<a href='admin.php' class='btn btn-danger my-4'>Regresar</a><div class='containerProd row'>";
             while ($fila = $resultado->fetch_assoc()) {
-                echo '<div class="card mb-3" style="max-width: 540px;">
+                echo '<div class="card mb-3 col-5" style=" margin: 0px 30px;">
             <div class="row no-gutters">
               <div class="col-md-4">
                 <img src="images/' . $fila["ArchivoIMG"] . '" class="card-img" alt="' . $fila["ArchivoIMG"] . '">
@@ -86,7 +86,7 @@
 </head>
 
 <body>
-
+ 
 </body>
 
 </html>

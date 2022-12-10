@@ -149,7 +149,7 @@ if (isset($_POST['logout'])) {
                     //var_dump($_SESSION['compras']);
                     //var_dump($_SESSION['cantidadPP']);
                     //array_push($_SESSION['compras'], $_POST['articulo']);
-                    echo "<table class='table table-dark table-striped'>
+                    echo "<table class='table align-middle'>
                     <tbody>";
                     $i=0;
                     foreach($_SESSION['compras'] as $index){
@@ -165,12 +165,12 @@ if (isset($_POST['logout'])) {
                                     break;
                                 }
                             }*/
-                            echo "<tr>
+                            echo "<tr class='text-white'>
                                 <td><img src='images/".$fila['ArchivoIMG']."' width='50px' height='50px'></td>
                                 <td><p>".$fila['NombreP']."</p></td>
                                 <td><p>".$_SESSION['cantidadPP'][$i]."</p></td>
-                                <td><p>".($fila['Precio']*$_SESSION['cantidadPP'][$i])."</p></td>
-                                <td><p><button id='eliminar' onclick='eliminarP(".$i.")'>Eliminar</button></p></td>
+                                <td><p>$".($fila['Precio']*$_SESSION['cantidadPP'][$i])."</p></td>
+                                <td><p><button id='eliminar' onclick='eliminarP(".$i.")' class='btn btn-danger'>Eliminar</button></p></td>
                             </tr>";
                         }
                         $i+=1;
@@ -196,13 +196,12 @@ if (isset($_POST['logout'])) {
         </div>
     </div>
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-      <img src="..." class="rounded me-2" alt="...">
+  <div id="liveToast" class="toast text-white bg-dark" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header text-white bg-dark border-dark">
       <strong class="me-auto">PRODUCTO AÑADIDO</strong>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
-    <div class="toast-body">
+    <div class="toast-body border-dark">
       Se ha añadido el producto a tu carrito de compra
     </div>
   </div>

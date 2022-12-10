@@ -61,12 +61,13 @@ if (isset($_POST['logout'])) {
                     echo '<div class="card border-2" style="max-width: 20rem; grid-area: product' . $i . '; overflow: hidden;">';
                     echo '<img src="images/' . $fila["ArchivoIMG"] . '" class="card-img-top" alt="' . $fila["ArchivoIMG"] . '" width="200px">
                         <div class="row no-gutters" style="z-index: 1; background-color: white;">
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 <div class="card-body"> 
                                     <h5 class="card-title">' . $fila["NombreP"] . '<br></h5>
+                                    <p class="card-text"><small class="text-muted">' . $fila["Descripcion"] . '</small></p>
                                     <p class="card-text"><small class="text-muted">Categoría: ' . $fila["Categoria"] . '</small></p>
                                     <p class="card-text"><small class="text-muted">Existencias: ' . $fila["Existencia"] . '</small></p>
-                                    <p class="card-text"><small class="text-muted">Precio: ' . $fila["Precio"] . '</small></p>
+                                    <p class="card-text"><small class="text-muted">Precio: $' . $fila["Precio"] . ' MXN</small></p>
                                     <p class="card-text"><small class="text-muted">Cantidad: <br><select id="cantidadP'.$fila["IdProd"].'" class="form-select form-select-sm" aria-label=".form-select-sm example">'; for($j=0; $j<$fila['Existencia']; $j++){ echo '<option value="'.($j+1).'">'.($j+1).'</option>'; }; echo '</select></small></p>
                                     <input id="producto" type="hidden" value="' . $fila["IdProd"] . '" name="articulo">
                                     <button type="submit" id="anadir'.$fila["IdProd"].'" class="btn btn-danger" onclick="';

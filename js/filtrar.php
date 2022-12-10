@@ -49,7 +49,7 @@ if ($resultado->num_rows) {
                         <h5 class="card-title">' . $fila["NombreP"] . '<br></h5>
                         <p class="card-text"><small class="text-muted">Categoría: ' . $fila["Categoria"] . '</small></p>
                         <p class="card-text"><small class="text-muted">Existencias: ' . $fila["Existencia"] . '</small></p>
-                        <p class="card-text"><small class="text-muted">Precio: ' . $fila["Precio"] . '</small></p>
+                        <p class="card-text"><small class="text-muted">Precio: $' . $fila["Precio"] . ' MXN</small></p>
                         <p class="card-text"><small class="text-muted">Cantidad: <br><select id="cantidadP'.$fila["IdProd"].'" class="form-select form-select-sm" aria-label=".form-select-sm example">'; for($j=0; $j<$fila['Existencia']; $j++){ echo '<option value="'.($j+1).'">'.($j+1).'</option>'; }; echo '</select></small></p>
                         <input id="producto" type="hidden" value="' . $fila["IdProd"] . '" name="articulo">
                         <button type="submit" id="anadir'.$fila["IdProd"].'" class="btn btn-danger" onclick="';

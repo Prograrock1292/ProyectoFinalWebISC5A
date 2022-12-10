@@ -114,36 +114,36 @@ if ($conexion->connect_errno) {
         <div class="col-8">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method='post'>
                 <h2>Registro de productos</h2>
-                <div class="form-group">
+                <div class="form-group my-3">
                     <label for="id">Id producto</label>
                     <input type="number" name="idprod" class="form-control" id="idprod" placeholder="">
                 </div>
-                <div class="form-group">
+                <div class="form-group my-3">
                     <label for="id">Nombre de producto</label>
                     <input type="text" class="form-control" name="nombrep" id="nombrep" placeholder="">
                 </div>
-                <div class="form-group">
+                <div class="form-group my-3">
                     <label for="id">Categoria</label>
                     <input type="text" name="categoria" class="form-control" id="categoria" placeholder="">
                 </div>
-                <div class="form-group">
+                <div class="form-group my-3">
                     <label for="id">Descripcion</label>
                     <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="">
                 </div>
-                <div class="form-group">
+                <div class="form-group my-3">
                     <label for="id">Existencia</label>
                     <input type="number" name="existencia" class="form-control" id="existencia" placeholder="">
                 </div>
-                <div class="form-group">
+                <div class="form-group my-3">
                     <label for="id">Precio</label>
                     <input type="number" name="precio" class="form-control" id="precio" placeholder="">
                 </div>
-                <div class="form-group">
+                <div class="form-group my-3">
                     <label for="id">Archivoimg</label>
                     <input type="text" name="archivoimg" class="form-control" id="archivoimg" placeholder="">
                 </div>
-                <button class="btn btn-success" type="submit" name="submit">Submit</button>
-                <button class="btn btn-success" type="submit" name="submit">Editar</button>
+                <button class="btn btn-danger" type="submit" name="submit">Dar de alta</button>
+                <button class="btn btn-danger" type="submit" name="submit">Editar</button>
             </form>
         </div>
     </div>

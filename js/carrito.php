@@ -15,7 +15,7 @@ echo "<p>Llevas comprado: ";
                     //var_dump($_SESSION['compras']);
                     //var_dump($_SESSION['cantidadPP']);
                     //array_push($_SESSION['compras'], $_POST['articulo']);
-                    echo "<table class='table table-dark table-striped'>
+                    echo "<table class='table align-middle'>
                     <tbody>";
                     $i=0;
                     foreach($_SESSION['compras'] as $index){
@@ -31,12 +31,12 @@ echo "<p>Llevas comprado: ";
                                     break;
                                 }
                             }*/
-                            echo "<tr>
+                            echo "<tr class='text-white'>
                                 <td><img src='images/".$fila['ArchivoIMG']."' width='50px' height='50px'></td>
                                 <td><p>".$fila['NombreP']."</p></td>
                                 <td><p>".$_SESSION['cantidadPP'][$i]."</p></td>
                                 <td><p>".($fila['Precio']*$_SESSION['cantidadPP'][$i])."</p></td>
-                                <td><p><button id='eliminar' onclick='eliminarP(".$i.")'>Eliminar</button></p></td>
+                                <td><p><button id='eliminar' onclick='eliminarP(".$i.")' class='btn btn-danger'>Eliminar</button></p></td>
                             </tr>";
                         }
                         $i+=1;

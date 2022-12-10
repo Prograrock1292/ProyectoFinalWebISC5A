@@ -19,10 +19,10 @@ $conexion = new mysqli($servidor, $cuenta, $password, $bd);
     <header>
         
     </header>
-    <section id="cuerpo" class="contacto" style="width: 40%">
+    <section id="cuerpo" class="contacto" style="width: 40%; margin: 0 auto;">
         <div class="div4">
             <div class="container-md">
-            <form action="confirmarPago.php" method="post" style="border: 2px solid #717171; margin-top: 20px; padding: 10px 30px; border-radius: 4px">
+            <form action="confirmarPago.php" method="post" style="border: 2px solid #717171; margin-top: 20px; padding: 10px 30px; border-radius: 4px; background: #fff">
                 <h2>Elige un método de pago</h2>
                 <div class="accordion accordion-flush" id="accordionFlushExample">
                     <div class="accordion-item text-white bg-dark">
@@ -86,7 +86,7 @@ $conexion = new mysqli($servidor, $cuenta, $password, $bd);
                 </div>
                 
                     <div class="mb-3 my-3">
-                      <label for="">¿Dónde quieres que se envíe tu pedido?</label>
+                      <label for=""><b>¿Dónde quieres que se envíe tu pedido?</b></label>
                     </div>
                      <div class="mb-3 my-3">
                       <input id="Nombre" name="Nombre" type="text" class="form-control" placeholder="Nombre completo">
@@ -125,7 +125,7 @@ $conexion = new mysqli($servidor, $cuenta, $password, $bd);
                         <label for="exampleFormControlInput1">Ingrese su cupón</label>
                         <input id="Cupon" name="Cupon" type="text" class="form-control" placeholder="Cupón">
                     </div>
-                    <input type="submit" name="pago" class="btn btn-primary" value="Proseguir al pago">
+                    <input type="submit" name="pago" class="btn btn-danger my-3" value="Finalizar pago">
                 </form>
             </div>
         </div>

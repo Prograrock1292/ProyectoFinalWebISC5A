@@ -1,4 +1,4 @@
-|<?php
+<?php
 
     $servidor = 'localhost:33065';
     $cuenta = 'root';
@@ -30,9 +30,9 @@
         $resultado = $conexion->query($sql);
 
         if ($resultado->num_rows) {
-            echo "<form class='containerProd' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "' method='post'>";
+            echo "<a href='edicion.php' class='btn btn-danger my-4'>Regresar</a><form class='containerProd' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "' method='post'>";
             while ($fila = $resultado->fetch_assoc()) {
-                echo '<div class="card mb-3" style="max-width: 540px;">
+                echo '<div class="card mb-3" style="">
             <div class="row no-gutters">
               <div class="col-md-4">
                 <img src="images/' . $fila["ArchivoIMG"] . '" class="card-img" alt="' . $fila["ArchivoIMG"] . '">
@@ -40,16 +40,17 @@
               <div class="col-md-8">
                 <div class="card-body"> 
 
-                  <h5 class="card-title">' . $fila["IdProd"] . '.- <input type = "text" name = "nombrep" placeholder = "' . $fila["NombreP"] . '"></h5>
-                  <p class="card-text"><small class="text-muted">Categoría: <input type = "text" name = "categoria" placeholder = "' . $fila["Categoria"] . '"> </small></p>
-                  <p class="card-text"><input type = "text" name = "descripcion" placeholder = "' . $fila["Descripcion"] . '"></p>
-                  <p class="card-text"><small class="text-muted">Existencias:<input type = "text" name = "existencia" placeholder = "' . $fila["Existencia"] . '"></small></p>
-                  <p class="card-text"><small class="text-muted">Precio: <input type = "number" name = "precio" placeholder = "' . $fila["Precio"] . '"></small></p>
-                  <p class="card-text"><small class="text-muted">Nombre de la imagen: <input type = "text" value = "'. $fila["ArchivoIMG"] .'" name = "archivoimg"></small></p>
+                  <h5 class="card-title">' . $fila["IdProd"] . '.- </h5>
+                  <p class="card-text">Nombre: &emsp;&emsp;<input type = "text" name = "nombrep" placeholder = "' . $fila["NombreP"] . '"></p>
+                  <p class="card-text">Categoría:&ensp;&emsp;<input type = "text" name = "categoria" placeholder = "' . $fila["Categoria"] . '"> </p>
+                  <p class="card-text">Descripción: <input type = "text" name = "descripcion" placeholder = "' . $fila["Descripcion"] . '"></p>
+                  <p class="card-text">Existencias: <input type = "text" name = "existencia" placeholder = "' . $fila["Existencia"] . '"></p>
+                  <p class="card-text">Precio: &emsp;&emsp;<input type = "number" name = "precio" placeholder = "' . $fila["Precio"] . '"></p>
+                  <p class="card-text">Imagen: &emsp;&emsp;<input type = "text" placeholder = "'. $fila["ArchivoIMG"] .'" name = "archivoimg"></p>
                   <input type = "hidden" value = "' . $fila["IdProd"] . '" name = "idprod"> 
                   
                   </form>
-                <button class="btn btn-success" type="submit" name="actualizar">Actualizar</button> 
+                <button class="btn btn-danger" type="submit" name="actualizar">Actualizar</button> 
               </div>
             </div>
           </div>';
@@ -86,6 +87,14 @@
             display: flex;
             flex-wrap: wrap;
             align-content: space-between;
+        }
+        
+        p input{
+            width: 80%;
+        }
+        
+        body {
+            margin: 0px 80px;
         }
     </style>
 </head>
