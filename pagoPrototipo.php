@@ -20,41 +20,9 @@ $conexion = new mysqli($servidor, $cuenta, $password, $bd);
         
     </header>
     <section id="cuerpo" class="contacto" style="width: 40%">
-        <div style="grid-area: aside;">
-            <?php
-            echo "<table class='table table-dark table-striped'>
-            <tbody>";
-            $i=0;
-            foreach($_SESSION['compras'] as $index){
-                if(!is_null($index)){
-                    $sqlC="SELECT ArchivoIMG, NombreP, Precio FROM productos WHERE IdProd='$index';";
-                    $resultado=$conexion->query($sqlC);
-                    $fila=$resultado->fetch_assoc();
-                    echo "<tr>
-                        <td><img src='images/".$fila['ArchivoIMG']."' width='50px' height='50px'></td>
-                        <td><p>".$fila['NombreP']."</p></td>
-                        <td><p>".$_SESSION['cantidadPP'][$i]."</p></td>
-                        <td><p>".($fila['Precio']*$_SESSION['cantidadPP'][$i])."</p></td>
-                    </tr>";
-                }
-                $i+=1;
-            }
-            echo "</tbody>
-            </table>
-            <p>Costo total:";
-            $_SESSION['precioTotal']=0;
-            for($k=0; $k<(sizeof($_SESSION['cantidadPP'])); $k++){
-                $index2=$_SESSION['compras'][$k];
-                $sqlC="SELECT ArchivoIMG, NombreP, Precio FROM productos WHERE IdProd='$index2';";
-                $resultado=$conexion->query($sqlC);
-                $fila=$resultado->fetch_assoc();
-                $_SESSION['precioTotal']+=($fila['Precio']*$_SESSION['cantidadPP'][$k]);
-            }
-            echo $_SESSION['precioTotal']."</p>";
-            ?>
-        </div>
-        <div class="div4" style="grid-area: form;">
+        <div class="div4">
             <div class="container-md">
+            <form action="confirmarPago.php" method="post" style="border: 2px solid #717171; margin-top: 20px; padding: 10px 30px; border-radius: 4px">
                 <h2>Elige un método de pago</h2>
                 <div class="accordion accordion-flush" id="accordionFlushExample">
                     <div class="accordion-item text-white bg-dark">
@@ -66,9 +34,6 @@ $conexion = new mysqli($servidor, $cuenta, $password, $bd);
                         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                            <p style="margin: 20px; font-weight: bold; font-size: 1.2em">Número de cuenta:</p>
                            <p style="margin: 20px; font-weight: bold; font-size: 1.2em">783 720 27594</p>
-                            <form class="accordion-body" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-                                <input type="submit" name="pago" class="btn btn-primary btn-lg" value="Continuar">
-                            </form>
                         </div>
                     </div>
                     <div class="accordion-item text-white bg-dark">
@@ -81,18 +46,14 @@ $conexion = new mysqli($servidor, $cuenta, $password, $bd);
                             <div class="accordion-body">
                                 <div class="input-group mb-3 ">
                                     <span class="input-group-text text-white" style="background: #151515; border-color: #151515" id="basic-addon1">No. de tarjeta</span>
-                                    <input type="text" class="form-control text-white bg-dark" style="border-color: #151515" value="4111 1111 1111 1111" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input id="tarjetaMC" name="tarjetaMC" type="text" class="form-control text-white bg-dark" style="border-color: #151515" placeholder="4111 1111 1111 1111" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text text-white" style="background: #151515; border-color: #151515" id="basic-addon1">Fecha expir.</span>
-                                    <input type="text" class="form-control text-white bg-dark" style="border-color: #151515" value="10/23" aria-label="fecha" aria-describedby="basic-addon1">
+                                    <input id="fechaExpMC" name="fechaExpMC" type="text" class="form-control text-white bg-dark" style="border-color: #151515" placeholder="10/23" aria-label="fecha" aria-describedby="basic-addon1">
                                     <span class="input-group-text text-white" style="background: #151515; border-color: #151515" id="basic-addon2">CCV</span>
-                                    <input type="number" class="form-control text-white bg-dark" style="border-color: #151515" value="123" aria-label="ccv" aria-describedby="basic-addon2">
+                                    <input id="ccvMC" name="ccvMC" type="password" class="form-control text-white bg-dark" style="border-color: #151515" placeholder="123" aria-label="ccv" aria-describedby="basic-addon2">
                                 </div>
-                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                                    <input type="submit" name="pago" class="btn btn-primary" value="Pagar">
-                                </form>
-                                
                             </div>
                         </div>
                     </div>
@@ -106,58 +67,65 @@ $conexion = new mysqli($servidor, $cuenta, $password, $bd);
                             <div class="accordion-body">
                                 <div class="input-group mb-3 ">
                                     <span class="input-group-text text-white" style="background: #151515; border-color: #151515" id="basic-addon1">No. de tarjeta</span>
-                                    <input type="text" class="form-control text-white bg-dark" style="border-color: #151515" value="4111 1111 1111 1111" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input id="tarjetaV" name="tarjetaV" type="text" class="form-control text-white bg-dark" style="border-color: #151515" placeholder="4111 1111 1111 1111" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text text-white" style="background: #151515; border-color: #151515" id="basic-addon1">Fecha expir.</span>
-                                    <input type="text" class="form-control text-white bg-dark" style="border-color: #151515" value="10/23" aria-label="fecha" aria-describedby="basic-addon1">
+                                    <input id="fechaExpV" name="fechaExpV" type="text" class="form-control text-white bg-dark" style="border-color: #151515" placeholder="10/23" aria-label="fecha" aria-describedby="basic-addon1">
                                     <span class="input-group-text text-white" style="background: #151515; border-color: #151515" id="basic-addon2">CCV</span>
-                                    <input type="number" class="form-control text-white bg-dark" style="border-color: #151515" value="123" aria-label="ccv" aria-describedby="basic-addon2">
+                                    <input id="ccvV" name="ccvV" type="number" class="form-control text-white bg-dark" style="border-color: #151515" placeholder="123" aria-label="ccv" aria-describedby="basic-addon2">
                                 </div>
-                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                                    <input type="submit" name="pago" class="btn btn-primary" value="Pagar">
-                                </form>
-                                
                             </div>
                         </div>
                     </div>
                     <?php
-                    if (isset($_POST['pago'])) {
+                    /*if (isset($_POST['pago'])) {
                         
-                    }
+                    }*/
                     ?>
                 </div>
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" style="border: 2px solid #717171; margin-top: 20px; padding: 10px 30px; border-radius: 4px">
+                
                     <div class="mb-3 my-3">
                       <label for="">¿Dónde quieres que se envíe tu pedido?</label>
                     </div>
                      <div class="mb-3 my-3">
-                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre completo">
+                      <input id="Nombre" name="Nombre" type="text" class="form-control" placeholder="Nombre completo">
                     </div>
                     <div class="mb-3 my-3">
-                      <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="ejemplo@gmail.com">
+                      <input id="Correo" name="Correo" type="email" class="form-control" placeholder="ejemplo@gmail.com">
                     </div>
                     <div class="mb-3 my-3">
-                      <input type="text" class="form-control" id="exampleFormControlInput3" placeholder="Dirección">
+                      <input id="Direccion" name="Direccion" type="text" class="form-control" placeholder="Dirección">
                     </div>
                     <div class="mb-3 my-3">
-                      <input type="text" class="form-control" id="exampleFormControlInput4" placeholder="Ciudad">
+                      <select id="Pais" name="Pais" class="form-select" aria-label="Default select example">
+                        <option selected>País</option>
+                        <option value="Mexico">México</option>
+                        <option value="USA">Estados Unidos</option>
+                        <option value="Canada">Canadá</option>
+                      </select>
                     </div>
                     <div class="mb-3 my-3">
-                      <input type="text" class="form-control" id="exampleFormControlInput5" placeholder="País">
+                      <input id="Ciudad" name="Ciudad" type="text" class="form-control" placeholder="Ciudad">
                     </div>
                     <div class="mb-3 my-3">
-                      <input type="text" class="form-control" id="exampleFormControlInput6" placeholder="Código postal">
+                      <input id="CP" name="CP" type="text" class="form-control" placeholder="Código postal">
                     </div>
                     <div class="mb-3 my-3">
-                      <input type="number" class="form-control" id="exampleFormControlInput7" placeholder="Teléfono">
+                      <input id="Telefono" name="Telefono" type="number" class="form-control" placeholder="Teléfono">
                     </div>
-                </form>
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" style="border: 2px solid #717171; margin-top: 20px; padding: 10px 30px; border-radius: 4px; width: 50%">
-                     <div class="mb-3 my-3">
-                      <label for="exampleFormControlInput1">Ingrese su cupón</label>
-                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Cupón">
+                    <div class="mb-3 my-3">
+                      <select id="Envio" name="Envio" class="form-select" aria-label="Default select example">
+                        <option selected>Tipo de envío</option>
+                        <option value="0">Gratis</option>
+                        <option value="200">Express ($200)</option>
+                      </select>
                     </div>
+                    <div class="mb-3 my-3">
+                        <label for="exampleFormControlInput1">Ingrese su cupón</label>
+                        <input id="Cupon" name="Cupon" type="text" class="form-control" placeholder="Cupón">
+                    </div>
+                    <input type="submit" name="pago" class="btn btn-primary" value="Proseguir al pago">
                 </form>
             </div>
         </div>
