@@ -47,10 +47,8 @@
  $password = '';
  $bd = 'proyfinal';
  
-$conexion = new mysqli($servidor, $cuenta, $password, $bd);
-if(strcmp(trim($_SESSION['nombre']), "Admin")){
-    header("Location: index.php");
-   }
+$conexion = new mysqli($servidor, $cuenta, $password, $bd); 
+
 if ($conexion->connect_errno) {
     die('Error en la conexion');
 } else {
