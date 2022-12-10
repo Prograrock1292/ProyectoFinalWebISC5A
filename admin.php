@@ -1,7 +1,8 @@
 <?php
 if(isset($_SESSION['nombre'])){
-    if(strcmp(trim($_SESSION['nombre']), "Admin")){
+    if(!strcmp(trim($_SESSION['nombre']), "Admin")){
                                  header("Location: index.php");
+                                 exit();
                                 }
                             }
 ?>
