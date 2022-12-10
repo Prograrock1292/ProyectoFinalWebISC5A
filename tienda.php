@@ -25,7 +25,7 @@ if (isset($_POST['logout'])) {
 </head>
 
 <body>
-    <section class="tienda">
+    <section id="tienda" class="tienda">
         
             <?php
             $sql = 'select * from productos';
@@ -48,7 +48,7 @@ if (isset($_POST['logout'])) {
                             </label>
                         </div>
                         <div class='form-check'>
-                            <input class='form-check-input' type='radio' name='radioCat' id='flexRadioDefault3' value='Cassette'>
+                            <input class='form-check-input' type='radio' name='radioCat' id='flexRadioDefault3' value='Casette'>
                             <label class='form-check-label' for='flexRadioDefault3'>
                             Casettes
                             </label>
