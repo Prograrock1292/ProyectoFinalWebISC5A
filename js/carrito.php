@@ -42,7 +42,17 @@ echo "<p>Llevas comprado: ";
                         $i+=1;
                     }
                     echo "</tbody>
-                    </table>";
+                    </table>
+                    <p>Costo total:";
+                    $_SESSION['precioTotal']=0;
+                    for($k=0; $k<(sizeof($_SESSION['cantidadPP'])); $k++){
+                        $index2=$_SESSION['compras'][$k];
+                        $sqlC="SELECT ArchivoIMG, NombreP, Precio FROM productos WHERE IdProd='$index2';";
+                        $resultado=$conexion->query($sqlC);
+                        $fila=$resultado->fetch_assoc();
+                        $_SESSION['precioTotal']+=($fila['Precio']*$_SESSION['cantidadPP'][$k]);
+                    }
+                    echo $_SESSION['precioTotal']."</p>";
                     //print_r($_SESSION['compras']);
                     echo "</p>";
 ?>

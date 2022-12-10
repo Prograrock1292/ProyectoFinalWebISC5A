@@ -53,6 +53,7 @@
                                     $_SESSION["compras"] = $micarrito;
                                     $_SESSION['cantidad'] = 0;
                                     $_SESSION['cantidadPP'] = $cantidadPP;
+                                    $_SESSION['precioTotal'] = 0;
                                     header('Location: index.php');
                                 } else if ($bloqueo['Bloqueo'] == '2') {
                                     mysqli_query($conexion, "UPDATE usuarios SET intentos=0 WHERE Cuenta = '$username'");
