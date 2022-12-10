@@ -17,7 +17,8 @@ $i = 1;
 if ($resultado->num_rows) {
     echo "<div class='containerProd'>";
     echo "<div class='aside' style='grid-area: aside;'>
-            <h5>Filtrar por categoría:</h5>
+            <h4>Filtrar por</h4>
+            <hr>
             <div class='form-check'>
                 <input class='form-check-input' type='radio' name='radioCat' id='flexRadioDefault1' value='Todas' checked>
                 <label class='form-check-label' for='flexRadioDefault1'>
@@ -31,17 +32,18 @@ if ($resultado->num_rows) {
                 </label>
             </div>
             <div class='form-check'>
-                <input class='form-check-input' type='radio' name='radioCat' id='flexRadioDefault3' value='Casette'>
+                <input class='form-check-input' type='radio' name='radioCat' id='flexRadioDefault3' value='Cassette'>
                 <label class='form-check-label' for='flexRadioDefault3'>
                 Casettes
                 </label>
             </div>
-            <button class='btn btn-success' onclick='filtrar()'>Filtrar</button>
+            <button class='btn btn-danger' onclick='filtrar()'>Filtrar</button>
+            <hr>
         </div>";
     while ($fila = $resultado->fetch_assoc()) {
-        echo '<div class="card" style="max-width: 18rem; grid-area: product' . $i . ';">';
-        echo '<img src="images/' . $fila["ArchivoIMG"] . '" class="card-img-top" alt="' . $fila["ArchivoIMG"] . '" width="200px">
-            <div class="row no-gutters">
+        echo '<div class="card border-2" style="max-width: 20rem; grid-area: product' . $i . '; overflow: hidden;">';
+                    echo '<img src="images/' . $fila["ArchivoIMG"] . '" class="card-img-top" alt="' . $fila["ArchivoIMG"] . '" width="200px">
+                        <div class="row no-gutters" style="z-index: 1; background-color: white;">
                 <div class="col-md-8">
                     <div class="card-body"> 
                         <h5 class="card-title">' . $fila["NombreP"] . '<br></h5>
@@ -50,7 +52,7 @@ if ($resultado->num_rows) {
                         <p class="card-text"><small class="text-muted">Precio: ' . $fila["Precio"] . '</small></p>
                         <p class="card-text"><small class="text-muted">Cantidad: <br><select id="cantidadP'.$fila["IdProd"].'" class="form-select form-select-sm" aria-label=".form-select-sm example">'; for($j=0; $j<$fila['Existencia']; $j++){ echo '<option value="'.($j+1).'">'.($j+1).'</option>'; }; echo '</select></small></p>
                         <input id="producto" type="hidden" value="' . $fila["IdProd"] . '" name="articulo">
-                        <button type="submit" id="anadir'.$fila["IdProd"].'" class="btn btn-success" onclick="';
+                        <button type="submit" id="anadir'.$fila["IdProd"].'" class="btn btn-danger" onclick="';
                         if(!isset($_SESSION['nombre'])){
                             echo "location.href='login.php'";
                         }
@@ -91,3 +93,14 @@ if ($resultado->num_rows) {
         </div>";
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/tienda.css">
+</head>
+<body>
+    
+</body>
+</html>
