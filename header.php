@@ -188,6 +188,7 @@ if (isset($_POST['logout'])) {
                     }
                     echo $_SESSION['precioTotal']."</p>";
                     //print_r($_SESSION['compras']);
+                    echo "<a href='pagoPrototipo.php' class='btn btn-danger btn-sm'>Proceder al pago</a>";
                     echo "</p>";
                 }
             }

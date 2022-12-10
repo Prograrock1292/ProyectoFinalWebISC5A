@@ -1,3 +1,11 @@
+<?php
+session_start();
+$servidor = 'localhost:33065';
+$cuenta = 'root';
+$password = '';
+$bd = 'proyfinal';
+$conexion = new mysqli($servidor, $cuenta, $password, $bd);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,13 +13,47 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/daf8eb91e6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/pagoPronto.css">
 </head>
 <body>
     <header>
         
     </header>
-    <section class="contacto" style="width: 40%">
-        <div class="div4">
+    <section id="cuerpo" class="contacto" style="width: 40%">
+        <div style="grid-area: aside;">
+            <?php
+            echo "<table class='table table-dark table-striped'>
+            <tbody>";
+            $i=0;
+            foreach($_SESSION['compras'] as $index){
+                if(!is_null($index)){
+                    $sqlC="SELECT ArchivoIMG, NombreP, Precio FROM productos WHERE IdProd='$index';";
+                    $resultado=$conexion->query($sqlC);
+                    $fila=$resultado->fetch_assoc();
+                    echo "<tr>
+                        <td><img src='images/".$fila['ArchivoIMG']."' width='50px' height='50px'></td>
+                        <td><p>".$fila['NombreP']."</p></td>
+                        <td><p>".$_SESSION['cantidadPP'][$i]."</p></td>
+                        <td><p>".($fila['Precio']*$_SESSION['cantidadPP'][$i])."</p></td>
+                    </tr>";
+                }
+                $i+=1;
+            }
+            echo "</tbody>
+            </table>
+            <p>Costo total:";
+            $_SESSION['precioTotal']=0;
+            for($k=0; $k<(sizeof($_SESSION['cantidadPP'])); $k++){
+                $index2=$_SESSION['compras'][$k];
+                $sqlC="SELECT ArchivoIMG, NombreP, Precio FROM productos WHERE IdProd='$index2';";
+                $resultado=$conexion->query($sqlC);
+                $fila=$resultado->fetch_assoc();
+                $_SESSION['precioTotal']+=($fila['Precio']*$_SESSION['cantidadPP'][$k]);
+            }
+            echo $_SESSION['precioTotal']."</p>";
+            ?>
+        </div>
+        <div class="div4" style="grid-area: form;">
             <div class="container-md">
                 <h2>Elige un método de pago</h2>
                 <div class="accordion accordion-flush" id="accordionFlushExample">

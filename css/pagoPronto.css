@@ -1,0 +1,12 @@
+body {
+    padding: 100px;
+}
+
+#cuerpo {
+    display: grid;
+    grid-template: "form form form aside"
+                   "form form form aside"
+                   "form form form aside"
+                   "form form form aside"
+                   "form form form aside" / 1fr 1fr 1fr 1fr;
+}
