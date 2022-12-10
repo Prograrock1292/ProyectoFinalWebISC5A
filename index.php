@@ -29,7 +29,7 @@
                 <div class="bg-text">
                     <h1>BIENVENIDO A</h1>
                 <img src="images/BoomBoxLogo5Img.png" alt="">
-                  <p><a href="#">Leer más</a></p>
+                  <p><a href="tienda.php">Ir a la tienda</a></p>
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
     </section>
     <section>
         <div class="secCupon">
-            <h1 style="color: white">¡Usa este cupón antes de que desaparezca!</h1>
+            <h1 style="color: white; margin-bottom: 30px">¡Usa este cupón antes de que desaparezca!</h1>
             <div style="width: 320px;">
                 <div style="background: rgb(85,0,0);
                             background: linear-gradient(0deg, rgba(85,0,0,1) 0%, rgba(89,0,0,1) 0%, rgba(0,0,0,1) 60%); text-align:center; padding: 20px; box-shadow: 0px 0px 15px 2px rgba(191, 191, 191, 0.4); border-radius: 4px">

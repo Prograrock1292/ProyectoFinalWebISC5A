@@ -67,6 +67,10 @@ body {
     border-radius: 2px;
 }
 
+.bg-text a:hover {
+    color: #8d0019;
+}
+
 .sec3 {
     display: grid;
     grid-gap: 28px;
