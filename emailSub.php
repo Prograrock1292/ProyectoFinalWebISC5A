@@ -9,6 +9,20 @@
 
     $mail = new PHPMailer(true);
 
+    $servidor='localhost:33065';
+    $cuenta='root';
+    $password='';
+    $bd='proyfinal';
+
+    $conexion = new mysqli($servidor,$cuenta,$password,$bd);
+
+    if ($conexion->connect_errno){
+         die('Error en la conexion');
+    }
+
+    $generacupon = mysqli_query($conexion, "SELECT * FROM cupones where cupon like '%S%' ORDER BY RAND() LIMIT 1;");
+    $cupon = mysqli_fetch_array($generacupon);
+
     try {
 
         $mail->SMTPDebug = SMTP::DEBUG_OFF;                  
@@ -44,11 +58,11 @@
                                             background: linear-gradient(0deg, rgba(85,0,0,1) 0%, rgba(89,0,0,1) 0%, rgba(0,0,0,1) 60%); text-align:center; padding: 20px;">
                                     <img src="cid:my-logo" alt="" width="200px" style="margin-bottom: 20px;">
                                     <div style="background: #000000; width: 50%; text-align: center; padding: 10px; font-size: 1.3em; font-family: sans-serif; margin-top: 20px; color: white;  margin: 0 auto;">
-                                        Cupón
+                                        '.$cupon['cupon'].'
                                     </div>
 
                                 </div>
-                                <p style="font-family: sans-serif; color: #4a4a4a; text-align: center; font-weight: bold"><small>25% de descuento sobre el total de tu compra</small></p>
+                                <p style="font-family: sans-serif; color: #4a4a4a; text-align: center; font-weight: bold"><small>'.$cupon['descuento'].'% de descuento sobre el total de tu compra</small></p>
                             </div>
                         </body>
                     </html>';
