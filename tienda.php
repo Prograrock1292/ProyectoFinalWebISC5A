@@ -21,6 +21,7 @@ if (isset($_POST['logout'])) {
     <link rel="stylesheet" href="css/tienda.css">
     <title>Tienda</title>
     <script src="js/carrito.js"></script>
+    <script src="js/categoria.js"></script>
 </head>
 
 <body>
@@ -34,6 +35,25 @@ if (isset($_POST['logout'])) {
                 echo "<div class='containerProd'>";
                 echo "<div class='aside' style='grid-area: aside;'>
                         <h5>Filtrar por categoría:</h5>
+                        <div class='form-check'>
+                            <input class='form-check-input' type='radio' name='radioCat' id='flexRadioDefault1' value='Todas' checked>
+                            <label class='form-check-label' for='flexRadioDefault1'>
+                            Todas las categorías
+                            </label>
+                        </div>
+                        <div class='form-check'>
+                            <input class='form-check-input' type='radio' name='radioCat' id='flexRadioDefault2' value='Vinilo'>
+                            <label class='form-check-label' for='flexRadioDefault2'>
+                            Vinilos
+                            </label>
+                        </div>
+                        <div class='form-check'>
+                            <input class='form-check-input' type='radio' name='radioCat' id='flexRadioDefault3' value='Cassette'>
+                            <label class='form-check-label' for='flexRadioDefault3'>
+                            Casettes
+                            </label>
+                        </div>
+                        <button class='btn btn-success' onclick='filtrar()'>Filtrar</button>
                     </div>";
                 while ($fila = $resultado->fetch_assoc()) {
                     echo '<div class="card" style="max-width: 18rem; grid-area: product' . $i . ';">';
