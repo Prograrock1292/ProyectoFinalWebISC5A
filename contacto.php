@@ -1,13 +1,5 @@
 <?php
     include_once('header.php');
-    $servidor = 'localhost:33065';
-    $cuenta = 'root';
-    $password = '';
-    $bd = 'proyfinal';
-    if(isset($_POST['logout'])) {
-        session_destroy();
-        header('Location: index.php');
-    }
 ?>
 
 

@@ -1,9 +1,5 @@
 <?php
     include_once('header.php');
-    $servidor = 'localhost:33065';
-    $cuenta = 'root';
-    $password = '';
-    $bd = 'proyfinal';
 
     $generacupon = mysqli_query($conexion, "SELECT * FROM cupones where cupon like '%I%' ORDER BY RAND() LIMIT 1;");
     $cupon = mysqli_fetch_array($generacupon);

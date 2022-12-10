@@ -1,65 +1,13 @@
 <?php
-if(isset($_SESSION['nombre'])){
+include_once('header.php'); 
+
+/*if(isset($_SESSION['nombre'])){
     if(!strcmp(trim($_SESSION['nombre']), "Admin")){
                                  header("Location: index.php");
                                  exit();
                                 }
-                            }
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        #containerProd {
-            margin-top: 50px;
-            padding: 0px 50px;
-        }
-        
-        #secc {
-            background-color: #710000;  
-            border-radius: 5px;
-            margin-right: 10px;
-        }
-        
-        #secc a {
-            color: white;
-            text-decoration: none;
-            margin: 0px 5px;
-            background-color: #530000; 
-            padding: 5px;
-            border-radius: 4px;
-        }
-        
-        #graficas {
-            display: flex;
-            
-        }
-    </style>
-    
-</head>
-<body>
-<div class="position-fixed bottom-0 end-0 p-3 " style="z-index: 11" id="secc">
-    <a href="#containerProd">Cambios</a>
-    <a href="#altas">Altas</a>
-    <a href="#graficash">Gráficas</a>
-</div>
-<?php
- include_once('header.php');   
- $servidor = 'localhost:33065';
- $cuenta = 'root';
- $password = '';
- $bd = 'proyfinal';
- 
-$conexion = new mysqli($servidor, $cuenta, $password, $bd); 
+                            }*/
 
-if ($conexion->connect_errno) {
-    die('Error en la conexion');
-} else {
     $sql1 = "SELECT NombreProd, Cantidad FROM ventastotales";
     $res1 = $conexion->query($sql1);
     $sql2 = "SELECT NombreProd, CantidadEnPesos FROM ventastotales";
@@ -104,9 +52,52 @@ if ($conexion->connect_errno) {
     } else {
         echo "no hay datos";
     }
-}
+
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #containerProd {
+            margin-top: 50px;
+            padding: 0px 50px;
+        }
+        
+        #secc {
+            background-color: #710000;  
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        
+        #secc a {
+            color: white;
+            text-decoration: none;
+            margin: 0px 5px;
+            background-color: #530000; 
+            padding: 5px;
+            border-radius: 4px;
+        }
+        
+        #graficas {
+            display: flex;
+            
+        }
+    </style>
+    
+</head>
+<body>
+<div class="position-fixed bottom-0 end-0 p-3 " style="z-index: 11" id="secc">
+    <a href="#containerProd">Cambios</a>
+    <a href="#altas">Altas</a>
+    <a href="#graficash">Gráficas</a>
+</div>
+
 
 
 <div class="container" style="margin: 30px">

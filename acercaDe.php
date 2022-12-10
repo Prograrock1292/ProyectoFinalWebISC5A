@@ -1,14 +1,5 @@
 <?php
     include_once('header.php');
-    $servidor = 'localhost:33065';
-    $cuenta = 'root';
-    $password = '';
-    $bd = 'proyfinal';
-    if(isset($_POST['logout'])) {
-        session_destroy();
-        header('Location: index.php');
-    }
-    
     $generacupon = mysqli_query($conexion, "SELECT * FROM cupones where cupon like '%R%' ORDER BY RAND() LIMIT 1;");
     $cupon = mysqli_fetch_array($generacupon);
 ?>
