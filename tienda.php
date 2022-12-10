@@ -37,7 +37,6 @@ if (isset($_POST['logout'])) {
                     </div>";
                 while ($fila = $resultado->fetch_assoc()) {
                     echo '<div class="card" style="max-width: 18rem; grid-area: product' . $i . ';">';
-                    //<form action=' . htmlspecialchars($_SERVER["PHP_SELF"]) . ' method="POST">
                     echo '<img src="images/' . $fila["ArchivoIMG"] . '" class="card-img-top" alt="' . $fila["ArchivoIMG"] . '" width="200px">
                         <div class="row no-gutters">
                             <div class="col-md-8">
@@ -46,19 +45,19 @@ if (isset($_POST['logout'])) {
                                     <p class="card-text"><small class="text-muted">Categoría: ' . $fila["Categoria"] . '</small></p>
                                     <p class="card-text"><small class="text-muted">Existencias: ' . $fila["Existencia"] . '</small></p>
                                     <p class="card-text"><small class="text-muted">Precio: ' . $fila["Precio"] . '</small></p>
+                                    <p class="card-text"><small class="text-muted">Cantidad: <br><select id="cantidadP'.$fila["IdProd"].'" class="form-select form-select-sm" aria-label=".form-select-sm example">'; for($j=0; $j<$fila['Existencia']; $j++){ echo '<option value="'.($j+1).'">'.($j+1).'</option>'; }; echo '</select></small></p>
                                     <input id="producto" type="hidden" value="' . $fila["IdProd"] . '" name="articulo">
-                                    <button id="anadir'.$fila["IdProd"].'" class="btn btn-success" onclick="';
+                                    <button type="submit" id="anadir'.$fila["IdProd"].'" class="btn btn-success" onclick="';
                                     if(!isset($_SESSION['nombre'])){
                                         echo "location.href='login.php'";
                                     }
                                     else{
-                                        echo 'carrito('.$fila["IdProd"].')';
+                                        echo 'carritoAdd('.$fila["IdProd"].')';
                                     }
                                     echo '">Agregar al carrito</button>
                                 </div>
                             </div>
                         </div>';
-                    //</form>
                 echo '</div>';
                     $i = $i + 1;
                 }

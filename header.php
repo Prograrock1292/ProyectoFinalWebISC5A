@@ -101,13 +101,23 @@ if (isset($_POST['logout'])) {
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link " aria-current="page" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping fa-2x position-relative"><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: .4em;">
+                                <a class="nav-link " aria-current="page" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping fa-2x position-relative">
+                                    <span id="cantidadC" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: .4em;">
                                     <?php
                                     if(!isset($_SESSION['nombre'])){
                                         echo "0";
                                     }
                                     else{
-                                        echo sizeof($_SESSION['compras']);
+                                        $catTotal=0;
+                                        if(!empty($_SESSION['cantidadPP'])){
+                                            foreach($_SESSION['cantidadPP'] as $cuantos){
+                                                $catTotal+=$cuantos;
+                                            }
+                                        echo $catTotal;
+                                        }
+                                        else{
+                                            echo "0";
+                                        }
                                     }
                                     ?>
                                   </span></i></a>
@@ -136,21 +146,34 @@ if (isset($_POST['logout'])) {
                     echo "<br><p>Carrito de compras vacío</p>";
                 else {
                     echo "<p>Llevas comprado: ";
+                    //var_dump($_SESSION['compras']);
+                    //var_dump($_SESSION['cantidadPP']);
                     //array_push($_SESSION['compras'], $_POST['articulo']);
                     echo "<table class='table table-dark table-striped'>
                     <tbody>";
                     $i=0;
                     foreach($_SESSION['compras'] as $index){
+                        if(!is_null($index)){
+                            $sqlC="SELECT ArchivoIMG, NombreP, Precio FROM productos WHERE IdProd='$index';";
+                            $resultado=$conexion->query($sqlC);
+                            $fila=$resultado->fetch_assoc();/*
+                            for($c=0; $c<count($_SESSION['compras']); $c++){
+                                if(!isset($_SESSION['compras'][$c]) || is_null($index)){
+                                    $i++;
+                                }
+                                else{
+                                    break;
+                                }
+                            }*/
+                            echo "<tr>
+                                <td><img src='images/".$fila['ArchivoIMG']."' width='50px' height='50px'></td>
+                                <td><p>".$fila['NombreP']."</p></td>
+                                <td><p>".$_SESSION['cantidadPP'][$i]."</p></td>
+                                <td><p>".($fila['Precio']*$_SESSION['cantidadPP'][$i])."</p></td>
+                                <td><p><button id='eliminar' onclick='eliminarP(".$i.")'>Eliminar</button></p></td>
+                            </tr>";
+                        }
                         $i+=1;
-                        $sqlC="SELECT ArchivoIMG, NombreP, Precio FROM productos WHERE IdProd='$index';";
-                        $resultado=$conexion->query($sqlC);
-                        $fila=$resultado->fetch_assoc();
-                        echo "<tr>
-                            <th scope='row'>".$i."</th>
-                            <td><img src='images/".$fila['ArchivoIMG']."' width='50px' height='50px'></td>
-                            <td><p>".$fila['NombreP']."</p></td>
-                            <td><p>".$fila['Precio']."</p></td>
-                        </tr>";
                     }
                     echo "</tbody>
                     </table>";

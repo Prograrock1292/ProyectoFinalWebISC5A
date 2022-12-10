@@ -47,11 +47,12 @@
                             if (isset($_SESSION['captcha_token']) && $_SESSION['captcha_token'] == $token) {
                                 if ($bloqueo['Bloqueo'] == '0') {
                                     mysqli_query($conexion, "UPDATE usuarios SET intentos=0 WHERE Cuenta = '$username'");
-                                    $_SESSION['nombre'] = $_POST['username'];
+                                    $_SESSION['nombre'] = $buscarpass['Nombre'];
                                     $micarrito=[];
+                                    $cantidadPP=[];
                                     $_SESSION["compras"] = $micarrito;
-
-                                    
+                                    $_SESSION['cantidad'] = 0;
+                                    $_SESSION['cantidadPP'] = $cantidadPP;
                                     header('Location: index.php');
                                 } else if ($bloqueo['Bloqueo'] == '2') {
                                     mysqli_query($conexion, "UPDATE usuarios SET intentos=0 WHERE Cuenta = '$username'");
