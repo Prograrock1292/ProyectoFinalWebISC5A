@@ -1,3 +1,10 @@
+<?php
+if(isset($_SESSION['nombre'])){
+    if(strcmp(trim($_SESSION['nombre']), "Admin")){
+                                 header("Location: index.php");
+                                }
+                            }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
