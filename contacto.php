@@ -20,8 +20,8 @@
                 <p>contact.us@boombox.com</p>
                 <p>123-456-7890</p>
                 <div class="redes">
-                    <i class="fa-brands fa-facebook fa-2x"></i>
-                    <i class="fa-brands fa-instagram fa-2x"></i>
+                    <a href="https://www.facebook.com/boomboxoficial" target="_blank"><i class="fa-brands fa-facebook fa-2x"></i></a>
+                    <a href="https://www.instagram.com/boomboxoficial_/" target="_blank"><i class="fa-brands fa-instagram fa-2x"></i></a>
                 </div>
                 <iframe width="453" height="257" src="https://www.youtube.com/embed/WPsfEeR2Z4E" title="Así es una tienda de discos de vinil en la actualidad" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>

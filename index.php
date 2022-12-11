@@ -70,8 +70,8 @@
                 <p>contact.us@boombox.com</p>
                 <p>123-456-7890</p>
                 <div class="redes">
-                    <i class="fa-brands fa-facebook fa-2x"></i>
-                    <i class="fa-brands fa-instagram fa-2x"></i>
+                    <a href="https://www.facebook.com/boomboxoficial" target="_blank"><i class="fa-brands fa-facebook fa-2x"></i></a>
+                    <a href="https://www.instagram.com/boomboxoficial_/" target="_blank"><i class="fa-brands fa-instagram fa-2x"></i></a>
                 </div>
             </div>
             <div class="sec4-2">

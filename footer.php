@@ -33,8 +33,8 @@
         <div class="contenedor">
             <img src="images/BoomBoxLogo3Img.png" alt="" width="200px">
             <div class="redesf">
-                <i class="fa-brands fa-facebook fa-2x"></i>
-                <i class="fa-brands fa-instagram fa-2x"></i>
+                <a href="https://www.facebook.com/boomboxoficial" target="_blank"><i class="fa-brands fa-facebook fa-2x"></i></a>
+                <a href="https://www.instagram.com/boomboxoficial_/" target="_blank"><i class="fa-brands fa-instagram fa-2x"></i></a>
             </div>
             <p>© 2022 BoomBox. Todos los derechos reservados</p>
             <p style="width: 30%;"><span style="color: #ba0021">ATENCIÓN: </span>El siguiente sitio forma parte de un proyecto académico, no está relacionado a ningún negocio ni organización con fines de lucro.</p>
