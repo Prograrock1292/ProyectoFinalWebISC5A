@@ -4,7 +4,7 @@
     $cuenta='root';
     $password='';
     $bd='proyfinal';
-    //$usuario = $_SESSION['nombre'];
+    $usuario = $_SESSION['nombre'];
    
     $conexion = new mysqli($servidor,$cuenta,$password,$bd);
 
