@@ -120,7 +120,8 @@
     <div style="width:100%; text-align: end; padding: 10px;" id="cerrar">                                   
         <a href="index.php"><img src="images/BoomBoxLogo4Img.png" alt="" style="width: 70px"></a>
     </div>
-       <form class="form mx-auto" role="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" style="width: 20%; margin-top: 80px;">
+      <div class="container-sm" id="resp">
+       <form class="form mx-auto" role="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" >
         <div class="form-group my-4 text-center">
             <h2>Iniciar sesión</h2>
         </div>
@@ -150,7 +151,7 @@
             <small>¿Eres nuevo en el sitio? <a href="registro.php"><b>Registra una cuenta</b></a></small>
         </div>
     </form>
-
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

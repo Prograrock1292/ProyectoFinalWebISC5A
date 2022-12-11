@@ -57,5 +57,40 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
     outline: none;
 }
 
+#resp {
+    width: 20%; 
+    margin-top: 80px;
+}
+
+@media screen and (max-width: 600px) {
+    #resp {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    #resp {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    #resp {
+        width: 40%;
+    }
+}
+
+
+@media screen and (min-width: 1000px) {
+    #resp {
+        width: 30%;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    #resp {
+        width: 25%;
+    }
+}
 
 
