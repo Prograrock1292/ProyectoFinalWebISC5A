@@ -110,6 +110,8 @@
     </section>
     <footer>
         <?php include_once('footer.php');?>
+        <p style="text-align: center; color: white;"><?php date_default_timezone_set('America/Mexico_City');
+        echo "Fecha de última actualización: ".date("F d Y H:i:s.", filemtime("index.php")); ?></p>
     </footer>
     
 </body>
