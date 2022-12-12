@@ -15,7 +15,6 @@
     if(isset($_POST['submit'])) {
         $password1 = $_POST['password1'];
         $password2 = $_POST['password2'];
-
         if ($password2 != $password1) {
             echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
                         <strong>¡Las contraseñas no coinciden!</strong> Por favor vuelva a intentarlo.
